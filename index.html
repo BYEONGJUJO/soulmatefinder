@@ -1,96 +1,2821 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+<html lang="ko" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">🔮 소울메이트 찾기 | AI 운명의 인연 테스트</title>
+    <meta name="description" content="AI가 분석하는 당신의 운명의 소울메이트! 언제, 어디서, 어떤 사람과 만날지 신비롭게 예측해드립니다." id="pageDesc">
+    <meta name="keywords" content="소울메이트,운명의인연,AI테스트,만남예측,사랑테스트,인연찾기,운명적만남">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="🔮 소울메이트 찾기 - AI 운명의 인연 테스트" id="ogTitle">
+    <meta property="og:description" content="AI가 분석하는 당신의 운명의 소울메이트! 언제, 어디서, 어떤 사람과 만날지 신비롭게 예측해드립니다." id="ogDesc">
+    <meta property="og:image" content="https://your-domain.com/soulmate-og.jpg">
+    <meta property="og:url" content="https://your-domain.com">
+    
+    <!-- Kakao SDK -->
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="heart" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:pink;stop-opacity:0.8"/><stop offset="100%" style="stop-color:white;stop-opacity:0"/></radialGradient></defs><circle cx="25" cy="25" r="2" fill="url(%23heart)"/><circle cx="75" cy="30" r="1.5" fill="url(%23heart)"/><circle cx="50" cy="75" r="1.8" fill="url(%23heart)"/><circle cx="20" cy="80" r="1.2" fill="url(%23heart)"/><circle cx="85" cy="60" r="1" fill="url(%23heart)"/></svg>') repeat;
+            animation: romantic-float 15s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes romantic-float {
+            0%, 100% { opacity: 0.4; transform: translateY(0px) rotate(0deg); }
+            50% { opacity: 0.8; transform: translateY(-40px) rotate(180deg); }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* 언어 선택 버튼 스타일 */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 5px;
+        }
+        
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 105, 180, 0.3);
+            border-radius: 25px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .lang-btn.active {
+            background: linear-gradient(45deg, #FF1493, #FFB6C1);
+            color: white;
+            border-color: #FF1493;
+        }
+        
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.3);
+        }
+        
+        .header {
+            text-align: center;
+            background: rgba(255,255,255,0.95);
+            padding: 2rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #FF1493, #FFB6C1, #FF69B4, #FFC0CB);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: romantic-gradient 8s ease-in-out infinite;
+        }
+
+        @keyframes romantic-gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            background: linear-gradient(45deg, #FFE4E6, #FFF0F5);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: #666;
+            border: 1px solid rgba(255,105,180,0.3);
+        }
+        
+        .input-section {
+            background: rgba(255,255,255,0.95);
+            padding: 1.5rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,105,180,0.2);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #FF1493;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input, .form-select {
+            padding: 0.8rem;
+            border: 2px solid #FFE4E6;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: white;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #FF1493;
+        }
+        
+        .analyze-button {
+            background: linear-gradient(45deg, #FF1493, #FFB6C1);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            margin-top: 1rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 350px;
+        }
+        
+        .analyze-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+        }
+
+        .analyze-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #FF1493;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .result-section {
+            background: rgba(255,255,255,0.95);
+            padding: 2rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            display: none;
+            backdrop-filter: blur(10px);
+        }
+        
+        .soulmate-result {
+            background: linear-gradient(45deg, #FFE4E6, #FFF0F5, #F8F0FF);
+            padding: 2rem 1.5rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255,105,180,0.3);
+        }
+
+        .soulmate-result::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,105,180,0.3) 0%, transparent 70%);
+            animation: romantic-shimmer 10s ease-in-out infinite;
+        }
+        
+        @keyframes romantic-shimmer {
+            0%, 100% { opacity: 0.4; transform: rotate(0deg); }
+            50% { opacity: 0.8; transform: rotate(180deg); }
+        }
+        
+        .soulmate-type {
+            font-size: clamp(3rem, 8vw, 5rem);
+            margin: 1rem 0;
+            position: relative;
+            z-index: 1;
+            animation: gentle-pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes gentle-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .soulmate-name {
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            margin: 1rem 0;
+            color: #FF1493;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+
+        .soulmate-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin: 1rem 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .meeting-details {
+            background: linear-gradient(45deg, #FFF8DC, #F0F8FF);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            text-align: left;
+            border: 1px solid rgba(255,105,180,0.3);
+        }
+
+        .meeting-details h3 {
+            color: #FF1493;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .compatibility-section {
+            background: linear-gradient(45deg, #E1F5FE, #FCE4EC);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+        }
+        
+        .traits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .trait-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255,105,180,0.2);
+        }
+
+        .trait-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .trait-emoji {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .trait-title {
+            font-weight: bold;
+            color: #FF1493;
+            margin-bottom: 0.5rem;
+        }
+
+        .trait-text {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .compatibility-score {
+            background: linear-gradient(45deg, #FF1493, #FFB6C1);
+            color: white;
+            padding: 1rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .meeting-prediction {
+            background: linear-gradient(45deg, #DDA0DD, #F0E68C);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            border: 1px solid rgba(255,105,180,0.3);
+        }
+        
+        .share-buttons {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .share-button {
+            color: white;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .share-button:hover {
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .share-button.kakao {
+            background: linear-gradient(45deg, #FEE500, #FFEB3B);
+            color: #3A1D1D;
+        }
+
+        .share-button.kakao:hover {
+            color: #3A1D1D;
+        }
+
+        .share-button.instagram {
+            background: linear-gradient(45deg, #E4405F, #9B59B6);
+        }
+
+        .share-button.facebook {
+            background: linear-gradient(45deg, #1877F2, #42A5F5);
+        }
+
+        .share-button.twitter {
+            background: linear-gradient(45deg, #1DA1F2, #0D8BD9);
+        }
+
+        .share-button.whatsapp {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+        }
+
+        .share-button.general {
+            background: linear-gradient(45deg, #FF1493, #FFB6C1);
+        }
+
+        #shareCanvas {
+            display: none;
+        }
+        
+        .related-tests {
+            background: rgba(255,255,255,0.95);
+            padding: 1.5rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .test-card {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-5px);
+            color: white;
+        }
+        
+        .upload-area {
+            border: 3px dashed #FFB6C1;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, #FFF8DC, #F0F8FF);
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .upload-area:hover {
+            border-color: #FF1493;
+            background: linear-gradient(45deg, #FFE4E6, #F0F8FF);
+            transform: scale(1.02);
+        }
+
+        .upload-area.dragover {
+            border-color: #FF1493 !important;
+            background: linear-gradient(45deg, #FFE4E6, #F0F8FF) !important;
+            transform: scale(1.05);
+        }
+
+        .upload-content {
+            pointer-events: none;
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #FF1493;
+        }
+
+        .upload-text {
+            font-size: 1.2rem;
+            color: #FF1493;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-subtext {
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .preview-container {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .preview-image {
+            max-width: 300px;
+            max-height: 300px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.3);
+            margin-bottom: 1rem;
+        }
+
+        .change-photo-btn {
+            background: linear-gradient(45deg, #FF1493, #FFB6C1);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #FF1493, #FFB6C1);
+            color: white;
+            padding: 1rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 1000;
+            animation: romantic-pulse 3s infinite;
+        }
+        
+        @keyframes romantic-pulse {
+            0% { transform: scale(1); box-shadow: 0 4px 20px rgba(255, 20, 147, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(255, 182, 193, 0.4); }
+            100% { transform: scale(1); box-shadow: 0 4px 20px rgba(255, 20, 147, 0.3); }
+        }
+
+        .footer {
+            background: rgba(255,255,255,0.95);
+            padding: 2rem 1rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer a {
+            color: #FF1493;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #FFB6C1;
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 5px; }
+            .traits-grid { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .language-selector {
+                top: 10px;
+                right: 10px;
+            }
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 언어 선택 버튼 -->
+    <div class="language-selector">
+        <button class="lang-btn active" onclick="changeLanguage('ko')" id="koBtn">한국어</button>
+        <button class="lang-btn" onclick="changeLanguage('en')" id="enBtn">English</button>
+    </div>
+
+    <div class="container">
+        <!-- 헤더 -->
+        <div class="header">
+            <h1 id="mainTitle">🔮 소울메이트 찾기</h1>
+            <p id="mainSubtitle">AI가 분석하는 당신의 운명의 인연! 언제, 어디서, 어떤 사람과 만날지 신비롭게 예측해드립니다 💕</p>
+            <div class="stats">
+                <span class="stat-item" id="stat1">💕 누적 매칭 1,234,567쌍</span>
+                <span class="stat-item" id="stat2">🎯 정확도 94.3%</span>
+                <span class="stat-item" id="stat3">⭐ 만족도 4.9/5</span>
+            </div>
+        </div>
+        
+        <!-- 사진 업로드 섹션 -->
+        <div class="input-section">
+            <h2 id="uploadTitle">📸 당신의 사진을 업로드하세요</h2>
+            <p id="uploadDesc">얼굴 분석을 통해 더 정확한 소울메이트 매칭이 가능해요!</p>
+            <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;" id="uploadHint">
+                💕 정면을 바라보는 선명한 얼굴 사진으로 업로드해주세요
+            </p>
+            
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                    <div class="upload-icon">📷</div>
+                    <div class="upload-text" id="uploadText">클릭하거나 이미지를 드래그해서 업로드</div>
+                    <div class="upload-subtext" id="uploadSubtext">JPG, PNG, GIF (최대 10MB)</div>
+                </div>
+                
+                <input type="file" id="imageUpload" class="file-input" accept="image/*,image/jpeg,image/jpg,image/png,image/gif,image/webp">
+            </div>
+            
+            <div class="preview-container" id="previewContainer" style="display: none;">
+                <img id="previewImage" class="preview-image" alt="미리보기">
+                <button class="change-photo-btn" onclick="changePhoto()" id="changePhotoBtn">📷 사진 변경</button>
+            </div>
+        </div>
+
+        <!-- 개인정보 입력 섹션 -->
+        <div class="input-section">
+            <h2 id="infoTitle">💫 당신의 정보를 입력하세요</h2>
+            <p id="infoDesc">더 정확한 소울메이트 분석을 위한 필수 정보들이에요</p>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label" id="genderLabel">성별</label>
+                    <select id="genderSelect" class="form-select">
+                        <option value="" id="genderPlaceholder">성별 선택</option>
+                        <option value="Male" id="genderMale">남성</option>
+                        <option value="Female" id="genderFemale">여성</option>
+                        <option value="Non-binary" id="genderNonBinary">논바이너리</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" id="ageLabel">연령대</label>
+                    <select id="ageSelect" class="form-select">
+                        <option value="" id="agePlaceholder">연령대 선택</option>
+                        <option value="Teens" id="ageTeens">10대</option>
+                        <option value="20s" id="age20s">20대</option>
+                        <option value="30s" id="age30s">30대</option>
+                        <option value="40s" id="age40s">40대</option>
+                        <option value="50s" id="age50s">50대</option>
+                        <option value="60+" id="age60plus">60대 이상</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" id="locationLabel">현재 거주지역</label>
+                    <select id="locationSelect" class="form-select">
+                        <option value="" id="locationPlaceholder">지역 선택</option>
+                        <!-- 한국어/영어별로 다른 옵션들이 동적으로 생성됩니다 -->
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" id="personalityLabel">성격 유형</label>
+                    <select id="personalitySelect" class="form-select">
+                        <option value="" id="personalityPlaceholder">성격 선택</option>
+                        <!-- 언어별로 다른 옵션들이 동적으로 생성됩니다 -->
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" id="hobbyLabel">취미/관심사</label>
+                    <select id="hobbySelect" class="form-select">
+                        <option value="" id="hobbyPlaceholder">관심사 선택</option>
+                        <!-- 언어별로 다른 옵션들이 동적으로 생성됩니다 -->
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" id="idealTypeLabel">이상형</label>
+                    <select id="idealTypeSelect" class="form-select">
+                        <option value="" id="idealTypePlaceholder">이상형 선택</option>
+                        <!-- 언어별로 다른 옵션들이 동적으로 생성됩니다 -->
+                    </select>
+                </div>
+            </div>
+
+            <button onclick="findSoulmate()" class="analyze-button" id="analyzeBtn" disabled>
+                💕 소울메이트 찾기
+            </button>
+        </div>
+        
+        <!-- 로딩 -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <h3 id="loadingTitle">💕 AI가 우주에서 당신의 소울메이트를 찾는 중...</h3>
+            <p id="loadingDesc">과거, 현재, 미래를 넘나들며 운명의 인연을 분석하고 있습니다</p>
+        </div>
+        
+        <!-- 결과 섹션 -->
+        <div class="result-section" id="resultSection">
+            <h2 id="resultTitle">✨ 소울메이트 분석 결과</h2>
+            
+            <div class="soulmate-result">
+                <div class="soulmate-type" id="soulmateType">💞</div>
+                <div class="soulmate-name" id="soulmateName">운명적 로맨스형</div>
+                <div class="soulmate-description" id="soulmateDescription">깊은 영혼의 교감을 나누는 운명적인 사랑을 만날 것입니다.</div>
+            </div>
+
+            <div class="compatibility-score" id="compatibilityScore">
+                💖 소울메이트 궁합도: 98%
+            </div>
+            
+            <div class="meeting-details">
+                <h3 id="meetingTitle">💫 만남 예측</h3>
+                <div id="meetingDetailsText">
+                    <p><strong id="timingLabel">📅 만날 시기:</strong> <span id="timingText">올해 가을, 특히 10월경</span></p>
+                    <p><strong id="locationMeetingLabel">📍 만날 장소:</strong> <span id="locationText">문화 공간이나 카페에서</span></p>
+                    <p><strong id="methodLabel">💝 만남 방식:</strong> <span id="methodText">친구의 소개나 우연한 만남</span></p>
+                    <p><strong id="signalLabel">🌟 특별한 신호:</strong> <span id="signalText">첫 만남에서 묘한 익숙함을 느낄 것</span></p>
+                </div>
+            </div>
+            
+            <div class="meeting-prediction">
+                <h3 id="storyTitle">🔮 인연 이야기</h3>
+                <p id="meetingPredictionText">당신의 소울메이트는 당신과 비슷한 영혼의 파장을 가진 사람입니다. 처음 만나는 순간부터 오래전부터 알고 지낸 것 같은 편안함을 느낄 거예요. 서로의 말을 끝까지 듣지 않아도 마음을 알 수 있는 특별한 인연이 될 것입니다!</p>
+            </div>
+            
+            <div class="compatibility-section">
+                <h3 id="traitsTitle">🌟 소울메이트 특징</h3>
+                <div class="traits-grid" id="traitsGrid">
+                    <!-- JavaScript로 동적 생성 -->
+                </div>
+            </div>
+            
+            <div class="share-buttons">
+                <button class="share-button kakao" onclick="shareToKakao()" id="shareKakao">💛 카카오톡</button>
+                <button class="share-button instagram" onclick="shareToInstagram()" id="shareInstagram">📷 인스타그램</button>
+                <button class="share-button facebook" onclick="shareToFacebook()" id="shareFacebook">📘 페이스북</button>
+                <button class="share-button twitter" onclick="shareToTwitter()" id="shareTwitter">🐦 트위터</button>
+                <button class="share-button whatsapp" onclick="shareToWhatsApp()" id="shareWhatsapp">💬 WhatsApp</button>
+                <button class="share-button general" onclick="shareGeneral()" id="shareGeneral">🔗 링크복사</button>
+            </div>
+
+            <div style="margin-top: 1rem;">
+                <button class="share-button general" onclick="retakeTest()" id="retakeBtn">🔄 다시 분석</button>
+                <button class="share-button general" onclick="saveResult()" id="saveBtn">💾 결과 저장</button>
+            </div>
+        </div>
+        
+        <!-- 연관 테스트 -->
+        <div class="related-tests">
+            <h2 id="relatedTestsTitle">🌟 다른 운명 테스트</h2>
+            <div class="test-grid">
+                <a href="https://www.futurespouse.site" class="test-card" target="_blank">
+                    <h3 id="relatedTest1">💒 미래 결혼상대 예측</h3>
+                    <p id="relatedDesc1">당신의 미래 배우자는 어떤 모습일까요?</p>
+                </a>
+                <a href="https://www.pastlifelover.site/?lang=ko#" class="test-card" target="_blank">
+                    <h3 id="relatedTest2">🔮 전생 연인 찾기</h3>
+                    <p id="relatedDesc2">전생에서 만났던 운명의 연인을 찾아보세요</p>
+                </a>
+                <a href="https://www.mylovefortune.site" class="test-card" target="_blank">
+                    <h3 id="relatedTest3">💕 연애 운세 분석</h3>
+                    <p id="relatedDesc3">올해 당신의 연애운을 확인해보세요</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- 푸터 -->
+        <div class="footer">
+            <h3 id="footerTitle">🔮 소울메이트 찾기</h3>
+            <p id="footerSubtitle">모든 만남에는 의미가 있어요! 💕</p>
+            <div style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                <a href="contact.html" id="contactLink">문의하기</a> | 
+                <a href="privacy.html" id="privacyLink">개인정보처리방침</a> | 
+                <a href="terms.html" id="termsLink">이용약관</a>
+            </div>
+            <p style="margin-top: 1rem; color: #999; font-size: 0.8rem;" id="copyright">
+                © 2025 소울메이트 찾기. All rights reserved.
+            </p>
+        </div>
+    </div>
+    
+    <!-- 플로팅 CTA -->
+    <div class="floating-cta" onclick="scrollToInput()" id="floatingCta">
+        💕 분석하기
+    </div>
+
+    <!-- 숨겨진 캔버스 (공유 이미지 생성용) -->
+    <canvas id="shareCanvas" width="600" height="800"></canvas>
+
+    <script>
+        // 현재 언어 설정
+        let currentLanguage = 'ko';
+
+        // 언어별 텍스트 데이터
+        const translations = {
+            ko: {
+                // 메타 정보
+                pageTitle: "🔮 소울메이트 찾기 | AI 운명의 인연 테스트",
+                pageDescription: "AI가 분석하는 당신의 운명의 소울메이트! 언제, 어디서, 어떤 사람과 만날지 신비롭게 예측해드립니다.",
+                ogTitle: "🔮 소울메이트 찾기 - AI 운명의 인연 테스트",
+                ogDescription: "AI가 분석하는 당신의 운명의 소울메이트! 언제, 어디서, 어떤 사람과 만날지 신비롭게 예측해드립니다.",
+                
+                // 메인 헤더
+                mainTitle: "🔮 소울메이트 찾기",
+                mainSubtitle: "AI가 분석하는 당신의 운명의 인연! 언제, 어디서, 어떤 사람과 만날지 신비롭게 예측해드립니다 💕",
+                stat1: "💕 누적 매칭 1,234,567쌍",
+                stat2: "🎯 정확도 94.3%",
+                stat3: "⭐ 만족도 4.9/5",
+                
+                // 업로드 섹션
+                uploadTitle: "📸 당신의 사진을 업로드하세요",
+                uploadDesc: "얼굴 분석을 통해 더 정확한 소울메이트 매칭이 가능해요!",
+                uploadHint: "💕 정면을 바라보는 선명한 얼굴 사진으로 업로드해주세요",
+                uploadText: "클릭하거나 이미지를 드래그해서 업로드",
+                uploadSubtext: "JPG, PNG, GIF (최대 10MB)",
+                changePhotoBtn: "📷 사진 변경",
+                
+                // 정보 입력 섹션
+                infoTitle: "💫 당신의 정보를 입력하세요",
+                infoDesc: "더 정확한 소울메이트 분석을 위한 필수 정보들이에요",
+                
+                // 폼 라벨들
+                genderLabel: "성별",
+                genderPlaceholder: "성별 선택",
+                genderMale: "남성",
+                genderFemale: "여성",
+                genderNonBinary: "논바이너리",
+                
+                ageLabel: "연령대",
+                agePlaceholder: "연령대 선택",
+                ageTeens: "10대",
+                age20s: "20대",
+                age30s: "30대",
+                age40s: "40대",
+                age50s: "50대",
+                age60plus: "60대 이상",
+                
+                locationLabel: "현재 거주지역",
+                locationPlaceholder: "지역 선택",
+                locations: [
+                    {value: "서울", text: "서울"},
+                    {value: "부산", text: "부산"},
+                    {value: "대구", text: "대구"},
+                    {value: "인천", text: "인천"},
+                    {value: "광주", text: "광주"},
+                    {value: "대전", text: "대전"},
+                    {value: "울산", text: "울산"},
+                    {value: "세종", text: "세종"},
+                    {value: "경기", text: "경기"},
+                    {value: "강원", text: "강원"},
+                    {value: "충북", text: "충북"},
+                    {value: "충남", text: "충남"},
+                    {value: "전북", text: "전북"},
+                    {value: "전남", text: "전남"},
+                    {value: "경북", text: "경북"},
+                    {value: "경남", text: "경남"},
+                    {value: "제주", text: "제주"},
+                    {value: "해외", text: "해외"}
+                ],
+                
+                personalityLabel: "성격 유형",
+                personalityPlaceholder: "성격 선택",
+                personalities: [
+                    {value: "Introverted", text: "내향적 (조용하고 신중함)"},
+                    {value: "Extroverted", text: "외향적 (활발하고 사교적)"},
+                    {value: "Emotional", text: "감성적 (감정 표현이 풍부)"},
+                    {value: "Rational", text: "이성적 (논리적이고 분석적)"},
+                    {value: "Adventurous", text: "모험적 (새로운 도전을 좋아함)"},
+                    {value: "Stable", text: "안정적 (계획적이고 체계적)"}
+                ],
+                
+                hobbyLabel: "취미/관심사",
+                hobbyPlaceholder: "관심사 선택",
+                hobbies: [
+                    {value: "Sports/Fitness", text: "운동/스포츠"},
+                    {value: "Music/Arts", text: "음악/예술"},
+                    {value: "Reading/Learning", text: "독서/학습"},
+                    {value: "Travel/Adventure", text: "여행/탐험"},
+                    {value: "Cooking/Food", text: "요리/맛집"},
+                    {value: "Gaming/Entertainment", text: "게임/오락"},
+                    {value: "Movies/TV", text: "영화/드라마"},
+                    {value: "Nature/Relaxation", text: "자연/힐링"}
+                ],
+                
+                idealTypeLabel: "이상형",
+                idealTypePlaceholder: "이상형 선택",
+                idealTypes: [
+                    {value: "Humorous", text: "유머러스한 사람"},
+                    {value: "Warm", text: "따뜻하고 다정한 사람"},
+                    {value: "Intelligent", text: "지적이고 똑똑한 사람"},
+                    {value: "Loyal", text: "의리 있고 진실한 사람"},
+                    {value: "Passionate", text: "열정적이고 적극적인 사람"},
+                    {value: "Independent", text: "자유롭고 독립적인 사람"},
+                    {value: "Romantic", text: "로맨틱하고 세심한 사람"},
+                    {value: "Reliable", text: "안정적이고 믿음직한 사람"}
+                ],
+                
+                analyzeBtn: "💕 소울메이트 찾기",
+                
+                // 로딩
+                loadingTitle: "💕 AI가 우주에서 당신의 소울메이트를 찾는 중...",
+                loadingDesc: "과거, 현재, 미래를 넘나들며 운명의 인연을 분석하고 있습니다",
+                
+                // 결과
+                resultTitle: "✨ 소울메이트 분석 결과",
+                compatibilityScore: "💖 소울메이트 궁합도: {0}%",
+                meetingTitle: "💫 만남 예측",
+                timingLabel: "📅 만날 시기:",
+                locationMeetingLabel: "📍 만날 장소:",
+                methodLabel: "💝 만남 방식:",
+                signalLabel: "🌟 특별한 신호:",
+                storyTitle: "🔮 인연 이야기",
+                traitsTitle: "🌟 소울메이트 특징",
+                
+                // 공유 버튼
+                shareKakao: "💛 카카오톡",
+                shareInstagram: "📷 인스타그램",
+                shareFacebook: "📘 페이스북",
+                shareTwitter: "🐦 트위터",
+                shareWhatsapp: "💬 WhatsApp",
+                shareGeneral: "🔗 링크복사",
+                retakeBtn: "🔄 다시 분석",
+                saveBtn: "💾 결과 저장",
+                
+                // 연관 테스트
+                relatedTestsTitle: "🌟 다른 운명 테스트",
+                relatedTest1: "💒 미래 결혼상대 예측",
+                relatedDesc1: "당신의 미래 배우자는 어떤 모습일까요?",
+                relatedTest2: "🔮 전생 연인 찾기",
+                relatedDesc2: "전생에서 만났던 운명의 연인을 찾아보세요",
+                relatedTest3: "💕 연애 운세 분석",
+                relatedDesc3: "올해 당신의 연애운을 확인해보세요",
+                
+                // 푸터
+                footerTitle: "🔮 소울메이트 찾기",
+                footerSubtitle: "모든 만남에는 의미가 있어요! 💕",
+                contactLink: "문의하기",
+                privacyLink: "개인정보처리방침",
+                termsLink: "이용약관",
+                copyright: "© 2025 소울메이트 찾기. All rights reserved.",
+                floatingCta: "💕 분석하기",
+                
+                // 알림 메시지
+                uploadImageFirst: "사진을 먼저 업로드해주세요!",
+                fillAllInfo: "모든 정보를 입력해주세요!",
+                imageOnlyAlert: "이미지 파일만 업로드 가능합니다.",
+                fileSizeAlert: "파일 크기는 10MB 이하여야 합니다.",
+                cooldownAlert: "💕 {0}초 후에 다시 시도해주세요!",
+                analysisCountAlert: "💕 오늘 {0}번째 분석! 소울메이트 찾기에 정말 열심이시네요! ✨",
+                completeAnalysisFirst: "먼저 소울메이트 분석을 완료해주세요!",
+                resultCopied: "💕 소울메이트 분석 결과가 복사되었습니다!\n\n원하는 곳에 붙여넣기해서 공유해보세요! ✨",
+                imageDownloaded: "이미지가 다운로드되었습니다!\n인스타그램에서 업로드해보세요 📷",
+                resultSaved: "결과가 저장되었습니다! 💾\n\n언제든 다시 확인할 수 있어요.",
+                saveResultFailed: "결과 저장에 실패했습니다. 스크린샷으로 저장해보세요! 📷",
+                noResultToSave: "저장할 결과가 없습니다!",
+                copyFailed: "복사에 실패했습니다. 수동으로 선택해서 복사해주세요."
+            },
+            en: {
+                // 메타 정보
+                pageTitle: "🔮 Soulmate Finder | AI Destiny Love Test",
+                pageDescription: "AI analyzes your destined soulmate! When, where, and what kind of person you'll meet mysteriously predicted.",
+                ogTitle: "🔮 Soulmate Finder - AI Destiny Love Test",
+                ogDescription: "AI analyzes your destined soulmate! When, where, and what kind of person you'll meet mysteriously predicted.",
+                
+                // 메인 헤더
+                mainTitle: "🔮 Soulmate Finder",
+                mainSubtitle: "AI analyzes your destined soulmate! When, where, and what kind of person you'll meet mysteriously predicted 💕",
+                stat1: "💕 1,234,567 Matches Found",
+                stat2: "🎯 94.3% Accuracy",
+                stat3: "⭐ 4.9/5 Satisfaction",
+                
+                // 업로드 섹션
+                uploadTitle: "📸 Upload Your Photo",
+                uploadDesc: "Facial analysis enables more accurate soulmate matching!",
+                uploadHint: "💕 Please upload a clear front-facing selfie",
+                uploadText: "Click or drag your image to upload",
+                uploadSubtext: "JPG, PNG, GIF (Max 10MB)",
+                changePhotoBtn: "📷 Change Photo",
+                
+                // 정보 입력 섹션
+                infoTitle: "💫 Enter Your Information",
+                infoDesc: "Essential information for more accurate soulmate analysis",
+                
+                // 폼 라벨들
+                genderLabel: "Gender",
+                genderPlaceholder: "Select Gender",
+                genderMale: "Male",
+                genderFemale: "Female",
+                genderNonBinary: "Non-binary",
+                
+                ageLabel: "Age Group",
+                agePlaceholder: "Select Age",
+                ageTeens: "Teens",
+                age20s: "20s",
+                age30s: "30s",
+                age40s: "40s",
+                age50s: "50s",
+                age60plus: "60+",
+                
+                locationLabel: "Current Location",
+                locationPlaceholder: "Select Location",
+                locations: [
+                    {value: "United States", text: "United States"},
+                    {value: "United Kingdom", text: "United Kingdom"},
+                    {value: "Canada", text: "Canada"},
+                    {value: "Australia", text: "Australia"},
+                    {value: "Germany", text: "Germany"},
+                    {value: "France", text: "France"},
+                    {value: "Japan", text: "Japan"},
+                    {value: "South Korea", text: "South Korea"},
+                    {value: "Singapore", text: "Singapore"},
+                    {value: "Other", text: "Other"}
+                ],
+                
+                personalityLabel: "Personality Type",
+                personalityPlaceholder: "Select Personality",
+                personalities: [
+                    {value: "Introverted", text: "Introverted (Quiet & Thoughtful)"},
+                    {value: "Extroverted", text: "Extroverted (Outgoing & Social)"},
+                    {value: "Emotional", text: "Emotional (Expressive & Sensitive)"},
+                    {value: "Rational", text: "Rational (Logical & Analytical)"},
+                    {value: "Adventurous", text: "Adventurous (Loves New Challenges)"},
+                    {value: "Stable", text: "Stable (Planned & Systematic)"}
+                ],
+                
+                hobbyLabel: "Hobbies/Interests",
+                hobbyPlaceholder: "Select Interests",
+                hobbies: [
+                    {value: "Sports/Fitness", text: "Sports/Fitness"},
+                    {value: "Music/Arts", text: "Music/Arts"},
+                    {value: "Reading/Learning", text: "Reading/Learning"},
+                    {value: "Travel/Adventure", text: "Travel/Adventure"},
+                    {value: "Cooking/Food", text: "Cooking/Food"},
+                    {value: "Gaming/Entertainment", text: "Gaming/Entertainment"},
+                    {value: "Movies/TV", text: "Movies/TV"},
+                    {value: "Nature/Relaxation", text: "Nature/Relaxation"}
+                ],
+                
+                idealTypeLabel: "Ideal Type",
+                idealTypePlaceholder: "Select Ideal Type",
+                idealTypes: [
+                    {value: "Humorous", text: "Humorous Person"},
+                    {value: "Warm", text: "Warm & Caring Person"},
+                    {value: "Intelligent", text: "Intelligent & Smart Person"},
+                    {value: "Loyal", text: "Loyal & Honest Person"},
+                    {value: "Passionate", text: "Passionate & Active Person"},
+                    {value: "Independent", text: "Free & Independent Person"},
+                    {value: "Romantic", text: "Romantic & Thoughtful Person"},
+                    {value: "Reliable", text: "Stable & Trustworthy Person"}
+                ],
+                
+                analyzeBtn: "💕 Find My Soulmate",
+                
+                // 로딩
+                loadingTitle: "💕 AI is searching the universe for your soulmate...",
+                loadingDesc: "Analyzing past, present, and future to find your destined connection",
+                
+                // 결과
+                resultTitle: "✨ Soulmate Analysis Results",
+                compatibilityScore: "💖 Soulmate Compatibility: {0}%",
+                meetingTitle: "💫 Meeting Prediction",
+                timingLabel: "📅 When:",
+                locationMeetingLabel: "📍 Where:",
+                methodLabel: "💝 How:",
+                signalLabel: "🌟 Special Sign:",
+                storyTitle: "🔮 Destiny Story",
+                traitsTitle: "🌟 Soulmate Characteristics",
+                
+                // 공유 버튼
+                shareKakao: "💛 KakaoTalk",
+                shareInstagram: "📷 Instagram",
+                shareFacebook: "📘 Facebook",
+                shareTwitter: "🐦 Twitter",
+                shareWhatsapp: "💬 WhatsApp",
+                shareGeneral: "🔗 Copy Link",
+                retakeBtn: "🔄 Retry Analysis",
+                saveBtn: "💾 Save Result",
+                
+                // 연관 테스트
+                relatedTestsTitle: "🌟 Other Destiny Tests",
+                relatedTest1: "💒 Future Spouse Prediction",
+                relatedDesc1: "What will your future spouse look like?",
+                relatedTest2: "🔮 Past Life Lover Test",
+                relatedDesc2: "Find your destined lover from past lives",
+                relatedTest3: "💕 Love Fortune Analysis",
+                relatedDesc3: "Check your love fortune for this year",
+                
+                // 푸터
+                footerTitle: "🔮 Soulmate Finder",
+                footerSubtitle: "Every meeting has meaning! 💕",
+                contactLink: "Contact",
+                privacyLink: "Privacy Policy",
+                termsLink: "Terms of Service",
+                copyright: "© 2025 Soulmate Finder. All rights reserved.",
+                floatingCta: "💕 Analyze",
+                
+                // 알림 메시지
+                uploadImageFirst: "Please upload a photo first!",
+                fillAllInfo: "Please fill in all information!",
+                imageOnlyAlert: "Only image files can be uploaded.",
+                fileSizeAlert: "File size must be 10MB or less.",
+                cooldownAlert: "💕 Please try again in {0} seconds!",
+                analysisCountAlert: "💕 {0}th analysis today! You're really passionate about finding your soulmate! ✨",
+                completeAnalysisFirst: "Please complete soulmate analysis first!",
+                resultCopied: "💕 Soulmate analysis result copied!\n\nPaste and share wherever you want! ✨",
+                imageDownloaded: "Image downloaded!\nUpload it on Instagram 📷",
+                resultSaved: "Result saved! 💾\n\nYou can check it anytime.",
+                saveResultFailed: "Failed to save result. Try saving as screenshot! 📷",
+                noResultToSave: "No result to save!",
+                copyFailed: "Copy failed. Please select and copy manually."
+            }
+        };
+
+        // 소울메이트 분석 데이터 (30가지 유형) - 다국어 지원
+        const soulmateData = [
+            {
+                type: "💞",
+                name: {
+                    ko: "운명적 로맨스형",
+                    en: "Destined Romance Type"
+                },
+                description: {
+                    ko: "깊은 영혼의 교감을 나누는 운명적인 사랑을 만날 것입니다. 서로를 보완하며 함께 성장하는 완벽한 조화를 이룰 거예요.",
+                    en: "You will meet a destined love with deep soul communication. Perfect harmony that complements each other and grows together."
+                },
+                meeting: {
+                    timing: {
+                        ko: "올해 가을, 특히 10월경",
+                        en: "This fall, especially around October"
+                    },
+                    location: {
+                        ko: "문화 공간이나 카페에서",
+                        en: "Cultural spaces or cafes"
+                    },
+                    method: {
+                        ko: "친구의 소개나 우연한 만남",
+                        en: "Friend's introduction or chance encounter"
+                    },
+                    signal: {
+                        ko: "첫 만남에서 묘한 익숙함을 느낄 것",
+                        en: "You'll feel mysterious familiarity at first meeting"
+                    }
+                },
+                story: {
+                    ko: "당신의 소울메이트는 당신과 비슷한 영혼의 파장을 가진 사람입니다. 처음 만나는 순간부터 오래전부터 알고 지낸 것 같은 편안함을 느낄 거예요. 서로의 말을 끝까지 듣지 않아도 마음을 알 수 있는 특별한 인연이 될 것입니다!",
+                    en: "Your soulmate is someone with a similar soul wavelength as yours. From the moment you first meet, you'll feel the comfort of knowing each other for a long time. You'll be able to understand each other's hearts without listening to the end of each other's words!"
+                },
+                traits: [
+                    {
+                        emoji: "💕", 
+                        title: {ko: "깊은 이해", en: "Deep Understanding"}, 
+                        text: {ko: "서로의 마음을 직감적으로 이해", en: "Intuitive understanding of each other's hearts"}
+                    },
+                    {
+                        emoji: "🌟", 
+                        title: {ko: "영혼의 공명", en: "Soul Resonance"}, 
+                        text: {ko: "같은 파장의 영적 연결", en: "Spiritual connection of same wavelength"}
+                    },
+                    {
+                        emoji: "🎭", 
+                        title: {ko: "완벽한 조화", en: "Perfect Harmony"}, 
+                        text: {ko: "부족한 부분을 서로 채워줌", en: "Filling each other's missing parts"}
+                    },
+                    {
+                        emoji: "💫", 
+                        title: {ko: "운명적 끌림", en: "Destined Attraction"}, 
+                        text: {ko: "설명할 수 없는 강한 인력", en: "Inexplicable strong magnetic force"}
+                    }
+                ],
+                compatibilityScore: 98
+            },
+            {
+                type: "🌙",
+                name: {
+                    ko: "신비로운 달빛형",
+                    en: "Mysterious Moonlight Type"
+                },
+                description: {
+                    ko: "달빛처럼 신비롭고 몽환적인 매력을 가진 소울메이트를 만날 것입니다. 예술적 감성과 깊은 정서를 공유하는 특별한 인연이에요.",
+                    en: "You will meet a soulmate with mysterious and dreamy charm like moonlight. A special connection sharing artistic sensitivity and deep emotions."
+                },
+                meeting: {
+                    timing: {
+                        ko: "보름달이 뜨는 밤, 특히 여름철",
+                        en: "Full moon nights, especially in summer"
+                    },
+                    location: {
+                        ko: "한강변이나 바닷가, 야경이 아름다운 곳",
+                        en: "Riverside, seaside, or scenic night views"
+                    },
+                    method: {
+                        ko: "예술 관련 모임이나 전시회에서",
+                        en: "Art-related gatherings or exhibitions"
+                    },
+                    signal: {
+                        ko: "달을 함께 보며 같은 감정을 느낄 것",
+                        en: "You'll feel the same emotions while looking at the moon together"
+                    }
+                },
+                story: {
+                    ko: "밤하늘의 별처럼 신비로운 매력을 가진 사람입니다. 함께 있으면 마치 꿈속에 있는 것 같은 몽환적인 기분을 느낄 거예요. 깊은 대화와 예술적 교감을 통해 서로의 내면을 알아가게 될 것입니다.",
+                    en: "A person with mysterious charm like stars in the night sky. Being together will feel like being in a dreamy state. You'll get to know each other's inner selves through deep conversations and artistic communion."
+                },
+                traits: [
+                    {
+                        emoji: "🌙", 
+                        title: {ko: "신비로운 매력", en: "Mysterious Charm"}, 
+                        text: {ko: "달빛같이 은은하고 신비로운 분위기", en: "Subtle and mysterious atmosphere like moonlight"}
+                    },
+                    {
+                        emoji: "🎨", 
+                        title: {ko: "예술적 감성", en: "Artistic Sensitivity"}, 
+                        text: {ko: "풍부한 예술적 감수성", en: "Rich artistic sensibility"}
+                    },
+                    {
+                        emoji: "🔮", 
+                        title: {ko: "직감적 소통", en: "Intuitive Communication"}, 
+                        text: {ko: "말하지 않아도 통하는 교감", en: "Understanding without words"}
+                    },
+                    {
+                        emoji: "💜", 
+                        title: {ko: "깊은 정서", en: "Deep Emotions"}, 
+                        text: {ko: "깊이 있는 감정적 연결", en: "Deep emotional connection"}
+                    }
+                ],
+                compatibilityScore: 94
+            },
+            {
+                type: "☀️",
+                name: {
+                    ko: "밝은 태양형",
+                    en: "Bright Sunshine Type"
+                },
+                description: {
+                    ko: "태양처럼 밝고 따뜻한 에너지를 가진 소울메이트입니다. 당신의 인생에 빛과 희망을 가져다줄 긍정적인 사람이에요.",
+                    en: "A soulmate with bright and warm energy like the sun. A positive person who will bring light and hope to your life."
+                },
+                meeting: {
+                    timing: {
+                        ko: "햇살 좋은 봄날, 특히 4-5월",
+                        en: "Sunny spring days, especially April-May"
+                    },
+                    location: {
+                        ko: "공원이나 야외 활동 장소",
+                        en: "Parks or outdoor activity venues"
+                    },
+                    method: {
+                        ko: "스포츠나 취미 활동을 통해",
+                        en: "Through sports or hobby activities"
+                    },
+                    signal: {
+                        ko: "밝은 웃음소리에 마음이 따뜻해질 것",
+                        en: "Your heart will warm at their bright laughter"
+                    }
+                },
+                story: {
+                    ko: "당신의 어둠을 밝혀줄 태양 같은 사람입니다. 함께 있으면 자연스럽게 웃음이 나고 세상이 밝아 보일 거예요. 서로를 격려하며 더 나은 사람으로 성장할 수 있는 건강한 관계를 만들어갈 것입니다.",
+                    en: "A person like the sun who will brighten your darkness. Being together will naturally bring smiles and make the world seem brighter. You'll create a healthy relationship where you encourage each other and grow into better people."
+                },
+                traits: [
+                    {
+                        emoji: "☀️", 
+                        title: {ko: "밝은 에너지", en: "Bright Energy"}, 
+                        text: {ko: "긍정적이고 활기찬 분위기", en: "Positive and vibrant atmosphere"}
+                    },
+                    {
+                        emoji: "😊", 
+                        title: {ko: "따뜻한 성격", en: "Warm Personality"}, 
+                        text: {ko: "사람들을 편안하게 만드는 온화함", en: "Gentleness that makes people comfortable"}
+                    },
+                    {
+                        emoji: "🌻", 
+                        title: {ko: "희망적 사고", en: "Hopeful Thinking"}, 
+                        text: {ko: "항상 밝은 면을 보는 시각", en: "Perspective that always sees the bright side"}
+                    },
+                    {
+                        emoji: "💛", 
+                        title: {ko: "치유의 힘", en: "Healing Power"}, 
+                        text: {ko: "상처를 따뜻하게 어루만지는 능력", en: "Ability to warmly comfort wounds"}
+                    }
+                ],
+                compatibilityScore: 96
+            },
+            {
+                type: "🌊",
+                name: {
+                    ko: "자유로운 바다형",
+                    en: "Free Ocean Type"
+                },
+                description: {
+                    ko: "바다처럼 자유분방하고 모험을 사랑하는 소울메이트입니다. 함께 새로운 세상을 탐험하며 인생의 참된 의미를 발견할 거예요.",
+                    en: "A soulmate who is free-spirited like the ocean and loves adventure. Together you'll explore new worlds and discover the true meaning of life."
+                },
+                meeting: {
+                    timing: {
+                        ko: "여행이나 휴가철, 특히 7-8월",
+                        en: "During travels or vacation season, especially July-August"
+                    },
+                    location: {
+                        ko: "해변, 공항, 또는 여행지에서",
+                        en: "At beaches, airports, or travel destinations"
+                    },
+                    method: {
+                        ko: "여행 중 우연한 만남이나 모험 활동에서",
+                        en: "Chance encounters during travel or adventure activities"
+                    },
+                    signal: {
+                        ko: "자유로운 영혼의 눈빛을 알아볼 것",
+                        en: "You'll recognize the eyes of a free spirit"
+                    }
+                },
+                story: {
+                    ko: "끝없는 바다처럼 자유로운 영혼을 가진 사람입니다. 함께 있으면 세상의 모든 가능성이 열려 보일 거예요. 서로의 꿈을 응원하며 제약 없는 사랑을 나누게 될 것입니다.",
+                    en: "A person with a free spirit like the endless ocean. Being together will open up all possibilities in the world. You'll support each other's dreams and share unconditional love."
+                },
+                traits: [
+                    {
+                        emoji: "🌊", 
+                        title: {ko: "자유로운 영혼", en: "Free Spirit"}, 
+                        text: {ko: "제약을 싫어하고 자유를 추구", en: "Dislikes constraints and pursues freedom"}
+                    },
+                    {
+                        emoji: "🗺️", 
+                        title: {ko: "모험정신", en: "Adventurous Spirit"}, 
+                        text: {ko: "새로운 경험을 즐기는 탐험가", en: "Explorer who enjoys new experiences"}
+                    },
+                    {
+                        emoji: "🎒", 
+                        title: {ko: "여행러버", en: "Travel Lover"}, 
+                        text: {ko: "세상을 여행하며 견문을 넓힘", en: "Broadens horizons by traveling the world"}
+                    },
+                    {
+                        emoji: "🌈", 
+                        title: {ko: "낙관주의", en: "Optimism"}, 
+                        text: {ko: "모든 상황을 긍정적으로 바라봄", en: "Views all situations positively"}
+                    }
+                ],
+                compatibilityScore: 91
+            },
+            {
+                type: "🏔️",
+                name: {
+                    ko: "든든한 산맥형",
+                    en: "Reliable Mountain Type"
+                },
+                description: {
+                    ko: "산처럼 든든하고 안정적인 소울메이트입니다. 어떤 어려움이 와도 함께 이겨낼 수 있는 강인한 파트너가 될 거예요.",
+                    en: "A reliable and stable soulmate like a mountain. A strong partner who can overcome any difficulties together."
+                },
+                meeting: {
+                    timing: {
+                        ko: "조용한 겨울날, 특히 12-1월",
+                        en: "Quiet winter days, especially December-January"
+                    },
+                    location: {
+                        ko: "도서관, 스터디카페, 조용한 카페",
+                        en: "Libraries, study cafes, quiet coffee shops"
+                    },
+                    method: {
+                        ko: "학습모임이나 독서클럽에서",
+                        en: "Study groups or book clubs"
+                    },
+                    signal: {
+                        ko: "안정감 있는 목소리와 차분한 분위기",
+                        en: "Stable voice and calm atmosphere"
+                    }
+                },
+                story: {
+                    ko: "높은 산처럼 언제나 의지할 수 있는 사람입니다. 함께 있으면 마음이 편안해지고 모든 걱정이 사라질 거예요. 서로를 지켜주며 평생을 함께할 수 있는 진정한 동반자가 될 것입니다.",
+                    en: "A person you can always rely on like a high mountain. Being together will bring peace of mind and make all worries disappear. You'll become true companions who protect each other for life."
+                },
+                traits: [
+                    {
+                        emoji: "🏔️", 
+                        title: {ko: "안정성", en: "Stability"}, 
+                        text: {ko: "흔들리지 않는 단단한 의지", en: "Unwavering strong will"}
+                    },
+                    {
+                        emoji: "🛡️", 
+                        title: {ko: "보호본능", en: "Protective Instinct"}, 
+                        text: {ko: "사랑하는 사람을 지키려는 마음", en: "Heart to protect loved ones"}
+                    },
+                    {
+                        emoji: "🤝", 
+                        title: {ko: "신뢰성", en: "Trustworthiness"}, 
+                        text: {ko: "약속을 지키고 믿음을 주는 성격", en: "Character that keeps promises and gives trust"}
+                    },
+                    {
+                        emoji: "💪", 
+                        title: {ko: "인내력", en: "Perseverance"}, 
+                        text: {ko: "어려움을 참고 견디는 힘", en: "Strength to endure and overcome difficulties"}
+                    }
+                ],
+                compatibilityScore: 89
+            },
+            {
+                type: "🌸",
+                name: {
+                    ko: "순수한 벚꽃형",
+                    en: "Pure Cherry Blossom Type"
+                },
+                description: {
+                    ko: "벚꽃처럼 순수하고 아름다운 마음을 가진 소울메이트입니다. 첫사랑의 설렘을 다시 느끼게 해줄 순수한 사랑을 경험할 거예요.",
+                    en: "A soulmate with a pure and beautiful heart like cherry blossoms. You'll experience pure love that will make you feel the excitement of first love again."
+                },
+                meeting: {
+                    timing: {
+                        ko: "벚꽃이 피는 봄, 특히 4월",
+                        en: "Spring when cherry blossoms bloom, especially April"
+                    },
+                    location: {
+                        ko: "벚꽃길, 공원, 학교 근처",
+                        en: "Cherry blossom paths, parks, near schools"
+                    },
+                    method: {
+                        ko: "봄 축제나 벚꽃 구경을 하다가",
+                        en: "During spring festivals or cherry blossom viewing"
+                    },
+                    signal: {
+                        ko: "순수한 미소와 맑은 눈동자",
+                        en: "Pure smile and clear eyes"
+                    }
+                },
+                story: {
+                    ko: "봄날의 벚꽃처럼 아름답고 순수한 마음을 가진 사람입니다. 함께 있으면 세상이 더 아름답게 보이고 마음이 정화되는 느낌을 받을 거예요. 서로의 순수함을 지켜주며 영원히 변하지 않는 사랑을 만들어갈 것입니다.",
+                    en: "A person with a beautiful and pure heart like spring cherry blossoms. Being together will make the world look more beautiful and give you a feeling of purification. You'll protect each other's purity and create an eternally unchanging love."
+                },
+                traits: [
+                    {
+                        emoji: "🌸", 
+                        title: {ko: "순수함", en: "Purity"}, 
+                        text: {ko: "때묻지 않은 깨끗한 마음", en: "Clean and untainted heart"}
+                    },
+                    {
+                        emoji: "💖", 
+                        title: {ko: "진실함", en: "Sincerity"}, 
+                        text: {ko: "거짓 없는 진심어린 사랑", en: "Sincere love without pretense"}
+                    },
+                    {
+                        emoji: "🕊️", 
+                        title: {ko: "평온함", en: "Peacefulness"}, 
+                        text: {ko: "마음을 편안하게 만드는 존재", en: "Presence that brings peace to the heart"}
+                    },
+                    {
+                        emoji: "✨", 
+                        title: {ko: "청순함", en: "Innocence"}, 
+                        text: {ko: "맑고 깨끗한 아름다움", en: "Clear and clean beauty"}
+                    }
+                ],
+                compatibilityScore: 87
+            },
+            {
+                type: "🔥",
+                name: {
+                    ko: "열정적인 불꽃형",
+                    en: "Passionate Flame Type"
+                },
+                description: {
+                    ko: "타오르는 불꽃처럼 열정적이고 역동적인 소울메이트입니다. 평범한 일상을 특별한 모험으로 바꿔줄 에너지 넘치는 사람이에요.",
+                    en: "A passionate and dynamic soulmate like a burning flame. An energetic person who will turn ordinary daily life into special adventures."
+                },
+                meeting: {
+                    timing: {
+                        ko: "뜨거운 여름밤, 특히 7-8월",
+                        en: "Hot summer nights, especially July-August"
+                    },
+                    location: {
+                        ko: "클럽, 콘서트, 스포츠 경기장",
+                        en: "Clubs, concerts, sports stadiums"
+                    },
+                    method: {
+                        ko: "열정적인 활동이나 파티에서",
+                        en: "Passionate activities or parties"
+                    },
+                    signal: {
+                        ko: "강렬한 눈빛과 뜨거운 에너지",
+                        en: "Intense gaze and hot energy"
+                    }
+                },
+                story: {
+                    ko: "불꽃처럼 뜨겁고 강렬한 사람입니다. 함께 있으면 삶이 드라마틱해지고 매일이 새로운 모험이 될 거예요. 서로의 열정을 나누며 뜨겁고 진실한 사랑을 만들어갈 것입니다.",
+                    en: "A hot and intense person like a flame. Being together will make life dramatic and every day a new adventure. You'll share each other's passion and create hot and sincere love."
+                },
+                traits: [
+                    {
+                        emoji: "🔥", 
+                        title: {ko: "열정", en: "Passion"}, 
+                        text: {ko: "모든 일에 뜨거운 열정을 쏟음", en: "Pours hot passion into everything"}
+                    },
+                    {
+                        emoji: "⚡", 
+                        title: {ko: "역동성", en: "Dynamism"}, 
+                        text: {ko: "활동적이고 에너지가 넘침", en: "Active and full of energy"}
+                    },
+                    {
+                        emoji: "🎯", 
+                        title: {ko: "추진력", en: "Drive"}, 
+                        text: {ko: "목표를 향해 적극적으로 나아감", en: "Actively moves toward goals"}
+                    },
+                    {
+                        emoji: "💥", 
+                        title: {ko: "강렬함", en: "Intensity"}, 
+                        text: {ko: "모든 감정을 진실하게 표현", en: "Expresses all emotions genuinely"}
+                    }
+                ],
+                compatibilityScore: 93
+            },
+            {
+                type: "🌿",
+                name: {
+                    ko: "자연친화 숲속형",
+                    en: "Nature-loving Forest Type"
+                },
+                description: {
+                    ko: "숲처럼 자연스럽고 치유의 에너지를 가진 소울메이트입니다. 함께 있으면 마음이 평화로워지고 진정한 힐링을 경험할 거예요.",
+                    en: "A soulmate with natural and healing energy like a forest. Being together will bring peace to your heart and experience true healing."
+                },
+                meeting: {
+                    timing: {
+                        ko: "신록이 우거진 초여름, 특히 5-6월",
+                        en: "Early summer with lush greenery, especially May-June"
+                    },
+                    location: {
+                        ko: "숲길, 식물원, 농장 체험장",
+                        en: "Forest paths, botanical gardens, farm experiences"
+                    },
+                    method: {
+                        ko: "자연 체험이나 등산 모임에서",
+                        en: "Nature experiences or hiking groups"
+                    },
+                    signal: {
+                        ko: "자연스러운 미소와 편안한 분위기",
+                        en: "Natural smile and comfortable atmosphere"
+                    }
+                },
+                story: {
+                    ko: "울창한 숲처럼 포용력이 크고 자연스러운 사람입니다. 함께 있으면 도시의 스트레스가 사라지고 본래의 자신을 찾게 될 거예요. 서로를 있는 그대로 받아들이며 건강하고 자연스러운 사랑을 키워갈 것입니다.",
+                    en: "A person with great tolerance and naturalness like a dense forest. Being together will make city stress disappear and help you find your true self. You'll accept each other as you are and cultivate healthy, natural love."
+                },
+                traits: [
+                    {
+                        emoji: "🌿", 
+                        title: {ko: "자연스러움", en: "Naturalness"}, 
+                        text: {ko: "꾸밈없는 진정한 모습", en: "Genuine appearance without pretense"}
+                    },
+                    {
+                        emoji: "🍃", 
+                        title: {ko: "치유력", en: "Healing Power"}, 
+                        text: {ko: "마음의 상처를 치유하는 능력", en: "Ability to heal wounds of the heart"}
+                    },
+                    {
+                        emoji: "🌱", 
+                        title: {ko: "성장지향", en: "Growth-oriented"}, 
+                        text: {ko: "함께 성장하고 발전하려는 의지", en: "Will to grow and develop together"}
+                    },
+                    {
+                        emoji: "🦋", 
+                        title: {ko: "포용력", en: "Embracing"}, 
+                        text: {ko: "모든 것을 감싸안는 큰 마음", en: "Big heart that embraces everything"}
+                    }
+                ],
+                compatibilityScore: 88
+            },
+            {
+                type: "⭐",
+                name: {
+                    ko: "빛나는 별빛형",
+                    en: "Shining Starlight Type"
+                },
+                description: {
+                    ko: "별처럼 빛나는 특별한 재능을 가진 소울메이트입니다. 서로의 꿈을 응원하며 함께 빛나는 미래를 만들어갈 거예요.",
+                    en: "A soulmate with special talents that shine like stars. You'll support each other's dreams and create a bright future together."
+                },
+                meeting: {
+                    timing: {
+                        ko: "별이 많이 보이는 밤, 특히 가을철",
+                        en: "Starry nights, especially in autumn"
+                    },
+                    location: {
+                        ko: "옥상, 전망대, 천문대",
+                        en: "Rooftops, observatories, planetariums"
+                    },
+                    method: {
+                        ko: "예술 공연이나 창작 활동에서",
+                        en: "Art performances or creative activities"
+                    },
+                    signal: {
+                        ko: "특별한 재능과 반짝이는 아우라",
+                        en: "Special talent and sparkling aura"
+                    }
+                },
+                story: {
+                    ko: "밤하늘의 별처럼 독특하고 빛나는 사람입니다. 함께 있으면 서로의 숨겨진 재능을 발견하고 더 큰 꿈을 꾸게 될 거예요. 서로를 영감의 원천으로 여기며 창조적인 사랑을 만들어갈 것입니다.",
+                    en: "A unique and shining person like stars in the night sky. Being together will help you discover each other's hidden talents and dream bigger dreams. You'll see each other as sources of inspiration and create creative love."
+                },
+                traits: [
+                    {
+                        emoji: "⭐", 
+                        title: {ko: "특별함", en: "Uniqueness"}, 
+                        text: {ko: "남다른 개성과 독특한 매력", en: "Unique personality and distinctive charm"}
+                    },
+                    {
+                        emoji: "✨", 
+                        title: {ko: "창의성", en: "Creativity"}, 
+                        text: {ko: "새로운 것을 만들어내는 능력", en: "Ability to create new things"}
+                    },
+                    {
+                        emoji: "🎨", 
+                        title: {ko: "예술감각", en: "Artistic Sense"}, 
+                        text: {ko: "뛰어난 미적 감각과 표현력", en: "Excellent aesthetic sense and expression"}
+                    },
+                    {
+                        emoji: "💫", 
+                        title: {ko: "영감", en: "Inspiration"}, 
+                        text: {ko: "다른 사람에게 영감을 주는 존재", en: "Being that gives inspiration to others"}
+                    }
+                ],
+                compatibilityScore: 90
+            },
+            {
+                type: "❄️",
+                name: {
+                    ko: "고요한 설산형",
+                    en: "Quiet Snow Mountain Type"
+                },
+                description: {
+                    ko: "눈 덮인 산처럼 고요하고 우아한 소울메이트입니다. 깊이 있는 대화와 정적인 아름다움을 함께 나눌 수 있는 사람이에요.",
+                    en: "A quiet and elegant soulmate like a snow-covered mountain. A person with whom you can share deep conversations and serene beauty."
+                },
+                meeting: {
+                    timing: {
+                        ko: "눈 내리는 겨울, 특히 12월-2월",
+                        en: "Snowy winter, especially December-February"
+                    },
+                    location: {
+                        ko: "미술관, 도서관, 클래식 공연장",
+                        en: "Art galleries, libraries, classical concert halls"
+                    },
+                    method: {
+                        ko: "문화 행사나 조용한 모임에서",
+                        en: "Cultural events or quiet gatherings"
+                    },
+                    signal: {
+                        ko: "우아한 자세와 깊은 생각에 잠긴 모습",
+                        en: "Elegant posture and deep contemplation"
+                    }
+                },
+                story: {
+                    ko: "고요한 설산처럼 차분하고 우아한 사람입니다. 함께 있으면 마음이 고요해지고 깊은 사색에 잠기게 될 거예요. 서로의 내면 세계를 천천히 탐험하며 깊이 있는 정신적 교감을 나누게 될 것입니다.",
+                    en: "A calm and elegant person like a quiet snow mountain. Being together will bring tranquility to your heart and deep contemplation. You'll slowly explore each other's inner worlds and share deep spiritual communion."
+                },
+                traits: [
+                    {
+                        emoji: "❄️", 
+                        title: {ko: "고요함", en: "Tranquility"}, 
+                        text: {ko: "평온하고 차분한 분위기", en: "Peaceful and calm atmosphere"}
+                    },
+                    {
+                        emoji: "💎", 
+                        title: {ko: "우아함", en: "Elegance"}, 
+                        text: {ko: "세련되고 품격 있는 매너", en: "Refined and dignified manner"}
+                    },
+                    {
+                        emoji: "📖", 
+                        title: {ko: "깊이", en: "Depth"}, 
+                        text: {ko: "생각이 깊고 철학적인 성향", en: "Deep thinking and philosophical nature"}
+                    },
+                    {
+                        emoji: "🎭", 
+                        title: {ko: "신비로움", en: "Mystery"}, 
+                        text: {ko: "쉽게 드러나지 않는 매력", en: "Charm that doesn't reveal easily"}
+                    }
+                ],
+                compatibilityScore: 86
+            },
+            {
+                type: "🌪️",
+                name: {
+                    ko: "역동적 바람형",
+                    en: "Dynamic Wind Type"
+                },
+                description: {
+                    ko: "바람처럼 자유롭고 변화무쌍한 소울메이트입니다. 예측할 수 없는 매력으로 당신의 일상에 새로운 활력을 불어넣어줄 거예요.",
+                    en: "A free and ever-changing soulmate like the wind. With unpredictable charm, they'll breathe new vitality into your daily life."
+                },
+                meeting: {
+                    timing: {
+                        ko: "바람이 많이 부는 날, 특히 봄가을",
+                        en: "Windy days, especially spring and autumn"
+                    },
+                    location: {
+                        ko: "해변가, 언덕, 야외 축제장",
+                        en: "Beaches, hills, outdoor festival venues"
+                    },
+                    method: {
+                        ko: "갑작스러운 만남이나 예상치 못한 상황에서",
+                        en: "Sudden encounters or unexpected situations"
+                    },
+                    signal: {
+                        ko: "자유분방한 몸짓과 예측 불가능한 행동",
+                        en: "Free-spirited gestures and unpredictable behavior"
+                    }
+                },
+                story: {
+                    ko: "시원한 바람처럼 상쾌하고 자유로운 사람입니다. 함께 있으면 고정관념에서 벗어나 새로운 시각으로 세상을 바라보게 될 거예요. 서로의 자유를 존중하며 역동적이고 생동감 넘치는 사랑을 만들어갈 것입니다.",
+                    en: "A refreshing and free person like a cool breeze. Being together will help you break free from stereotypes and see the world from new perspectives. You'll respect each other's freedom and create dynamic, vibrant love."
+                },
+                traits: [
+                    {
+                        emoji: "🌪️", 
+                        title: {ko: "변화무쌍", en: "Ever-changing"}, 
+                        text: {ko: "매번 다른 모습으로 놀라게 함", en: "Surprises with different aspects each time"}
+                    },
+                    {
+                        emoji: "🎭", 
+                        title: {ko: "다재다능", en: "Versatile"}, 
+                        text: {ko: "다양한 분야에서 재능을 발휘", en: "Shows talent in various fields"}
+                    },
+                    {
+                        emoji: "🚀", 
+                        title: {ko: "활동성", en: "Activity"}, 
+                        text: {ko: "끊임없이 움직이고 도전함", en: "Constantly moving and challenging"}
+                    },
+                    {
+                        emoji: "💨", 
+                        title: {ko: "자유로움", en: "Freedom"}, 
+                        text: {ko: "어떤 틀에도 얽매이지 않음", en: "Not bound by any framework"}
+                    }
+                ],
+                compatibilityScore: 92
+            },
+            {
+                type: "🌺",
+                name: {
+                    ko: "따뜻한 꽃밭형",
+                    en: "Warm Flower Garden Type"
+                },
+                description: {
+                    ko: "꽃밭처럼 아름답고 향기로운 소울메이트입니다. 당신의 마음에 사랑의 꽃을 피워주고 일상을 행복으로 물들여줄 거예요.",
+                    en: "A beautiful and fragrant soulmate like a flower garden. They'll bloom flowers of love in your heart and color your daily life with happiness."
+                },
+                meeting: {
+                    timing: {
+                        ko: "꽃이 만발한 봄과 초여름, 특히 5월",
+                        en: "Spring and early summer when flowers bloom, especially May"
+                    },
+                    location: {
+                        ko: "꽃집, 정원, 식물원, 꽃축제",
+                        en: "Flower shops, gardens, botanical gardens, flower festivals"
+                    },
+                    method: {
+                        ko: "꽃과 관련된 활동이나 봉사활동에서",
+                        en: "Flower-related activities or volunteer work"
+                    },
+                    signal: {
+                        ko: "꽃처럼 아름다운 미소와 향기로운 분위기",
+                        en: "Flower-like beautiful smile and fragrant atmosphere"
+                    }
+                },
+                story: {
+                    ko: "만개한 꽃밭처럼 아름답고 사랑스러운 사람입니다. 함께 있으면 마음이 따뜻해지고 세상이 더 아름답게 보일 거예요. 서로를 소중히 여기며 매일매일 사랑의 꽃을 피워나가는 달콤한 관계를 만들어갈 것입니다.",
+                    en: "A beautiful and lovely person like a blooming flower garden. Being together will warm your heart and make the world look more beautiful. You'll treasure each other and create a sweet relationship where love flowers bloom every day."
+                },
+                traits: [
+                    {
+                        emoji: "🌺", 
+                        title: {ko: "아름다움", en: "Beauty"}, 
+                        text: {ko: "내면과 외면의 조화로운 아름다움", en: "Harmonious beauty inside and out"}
+                    },
+                    {
+                        emoji: "🌸", 
+                        title: {ko: "다정함", en: "Tenderness"}, 
+                        text: {ko: "부드럽고 따뜻한 마음씨", en: "Soft and warm heart"}
+                    },
+                    {
+                        emoji: "🦋", 
+                        title: {ko: "매력", en: "Charm"}, 
+                        text: {ko: "사람들을 끌어당기는 자연스러운 매력", en: "Natural charm that attracts people"}
+                    },
+                    {
+                        emoji: "💐", 
+                        title: {ko: "배려심", en: "Consideration"}, 
+                        text: {ko: "상대방을 생각하는 세심한 마음", en: "Thoughtful heart that considers others"}
+                    }
+                ],
+                compatibilityScore: 95
+            },
+            {
+                type: "🌋",
+                name: {
+                    ko: "강렬한 화산형",
+                    en: "Intense Volcano Type"
+                },
+                description: {
+                    ko: "화산처럼 강렬하고 깊은 감정을 가진 소울메이트입니다. 평생 잊을 수 없는 드라마틱한 사랑을 경험하게 될 거예요.",
+                    en: "A soulmate with intense and deep emotions like a volcano. You'll experience dramatic love that you'll never forget for a lifetime."
+                },
+                meeting: {
+                    timing: {
+                        ko: "운명적인 순간, 예상치 못한 때",
+                        en: "Fateful moments, unexpected times"
+                    },
+                    location: {
+                        ko: "극장, 콘서트홀, 감정이 고조되는 장소",
+                        en: "Theaters, concert halls, places where emotions run high"
+                    },
+                    method: {
+                        ko: "강렬한 첫눈에 반함이나 극적인 상황에서",
+                        en: "Intense love at first sight or dramatic situations"
+                    },
+                    signal: {
+                        ko: "타오르는 듯한 눈빛과 강한 존재감",
+                        en: "Burning gaze and strong presence"
+                    }
+                },
+                story: {
+                    ko: "용암처럼 뜨겁고 강렬한 감정을 가진 사람입니다. 함께 있으면 삶의 모든 순간이 드라마가 되고 감정의 깊이를 경험하게 될 거예요. 서로를 향한 강렬한 사랑으로 세상 모든 것을 불태울 것 같은 열정적인 관계를 만들어갈 것입니다.",
+                    en: "A person with hot and intense emotions like lava. Being together will turn every moment of life into drama and experience emotional depth. You'll create a passionate relationship with intense love for each other that seems to burn everything in the world."
+                },
+                traits: [
+                    {
+                        emoji: "🌋", 
+                        title: {ko: "강렬함", en: "Intensity"}, 
+                        text: {ko: "모든 감정을 깊고 강하게 느낌", en: "Feels all emotions deeply and strongly"}
+                    },
+                    {
+                        emoji: "🔥", 
+                        title: {ko: "열정", en: "Passion"}, 
+                        text: {ko: "무엇이든 열정적으로 몰입", en: "Passionately commits to everything"}
+                    },
+                    {
+                        emoji: "💥", 
+                        title: {ko: "폭발력", en: "Explosive Power"}, 
+                        text: {ko: "순간의 강렬한 에너지 분출", en: "Intense energy bursts in moments"}
+                    },
+                    {
+                        emoji: "❤️‍🔥", 
+                        title: {ko: "깊은 사랑", en: "Deep Love"}, 
+                        text: {ko: "한번 사랑하면 끝까지 진심", en: "Once in love, sincere to the end"}
+                    }
+                ],
+                compatibilityScore: 97
+            },
+            // 추가 소울메이트 타입들 (더 다양한 선택지 제공)
+            {
+                type: "💎",
+                name: {
+                    ko: "귀중한 보석형",
+                    en: "Precious Gem Type"
+                },
+                description: {
+                    ko: "다이아몬드처럼 희귀하고 소중한 소울메이트입니다. 한 번 만나면 평생 간직하고 싶은 특별한 사람이 될 거예요.",
+                    en: "A rare and precious soulmate like a diamond. Once you meet, they'll be a special person you'll want to treasure for life."
+                },
+                meeting: {
+                    timing: {
+                        ko: "인생의 중요한 순간, 기념일",
+                        en: "Important moments in life, anniversaries"
+                    },
+                    location: {
+                        ko: "고급 레스토랑이나 특별한 장소",
+                        en: "Fine restaurants or special venues"
+                    },
+                    method: {
+                        ko: "격식 있는 만남이나 공식 행사에서",
+                        en: "Formal meetings or official events"
+                    },
+                    signal: {
+                        ko: "품격 있는 분위기와 특별한 존재감",
+                        en: "Dignified atmosphere and special presence"
+                    }
+                },
+                story: {
+                    ko: "세상에 하나뿐인 보석처럼 소중하고 특별한 사람입니다. 함께 있으면 자신도 더 값진 존재가 된 것 같은 느낌을 받을 거예요. 서로를 아끼고 소중히 여기는 고급스러운 사랑을 경험하게 될 것입니다.",
+                    en: "A precious and special person like a unique gem in the world. Being together will make you feel like you've become more valuable too. You'll experience luxurious love where you cherish and treasure each other."
+                },
+                traits: [
+                    {
+                        emoji: "💎", 
+                        title: {ko: "희귀성", en: "Rarity"}, 
+                        text: {ko: "세상에 하나뿐인 특별함", en: "Unique specialness in the world"}
+                    },
+                    {
+                        emoji: "✨", 
+                        title: {ko: "고급스러움", en: "Luxury"}, 
+                        text: {ko: "품격 있고 세련된 매력", en: "Dignified and sophisticated charm"}
+                    },
+                    {
+                        emoji: "🏆", 
+                        title: {ko: "완벽함", en: "Perfection"}, 
+                        text: {ko: "모든 면에서 완벽에 가까운 조화", en: "Near-perfect harmony in all aspects"}
+                    },
+                    {
+                        emoji: "👑", 
+                        title: {ko: "귀중함", en: "Preciousness"}, 
+                        text: {ko: "돈으로 살 수 없는 소중한 가치", en: "Precious value that money can't buy"}
+                    }
+                ],
+                compatibilityScore: 99
+            },
+            {
+                type: "🌍",
+                name: {
+                    ko: "광활한 지구형",
+                    en: "Vast Earth Type"
+                },
+                description: {
+                    ko: "지구처럼 포용력이 크고 다양한 면을 가진 소울메이트입니다. 모든 것을 품어안는 넓은 마음으로 당신을 받아들일 거예요.",
+                    en: "A soulmate with great embrace and diverse aspects like the Earth. They will accept you with a broad heart that embraces everything."
+                },
+                meeting: {
+                    timing: {
+                        ko: "세계적인 행사나 국제적 모임",
+                        en: "Global events or international gatherings"
+                    },
+                    location: {
+                        ko: "공항, 국제회의장, 문화교류 행사",
+                        en: "Airports, international conference halls, cultural exchange events"
+                    },
+                    method: {
+                        ko: "다양한 문화가 만나는 장소에서",
+                        en: "Where diverse cultures meet"
+                    },
+                    signal: {
+                        ko: "글로벌한 시각과 포용력 있는 마음",
+                        en: "Global perspective and inclusive heart"
+                    }
+                },
+                story: {
+                    ko: "다양한 문화와 경험을 품고 있는 글로벌한 사람입니다. 함께 있으면 세상이 더 넓어 보이고 새로운 관점을 얻게 될 거예요. 서로의 다름을 인정하고 존중하는 성숙한 관계를 만들어갈 것입니다.",
+                    en: "A global person who embraces diverse cultures and experiences. Being together will make the world seem broader and give you new perspectives. You'll create a mature relationship that acknowledges and respects each other's differences."
+                },
+                traits: [
+                    {
+                        emoji: "🌍", 
+                        title: {ko: "글로벌 마인드", en: "Global Mind"}, 
+                        text: {ko: "세계적 시각과 넓은 견해", en: "Global perspective and broad views"}
+                    },
+                    {
+                        emoji: "🤝", 
+                        title: {ko: "포용력", en: "Inclusiveness"}, 
+                        text: {ko: "모든 것을 받아들이는 큰 마음", en: "Big heart that accepts everything"}
+                    },
+                    {
+                        emoji: "🎭", 
+                        title: {ko: "다양성", en: "Diversity"}, 
+                        text: {ko: "다채로운 면모와 경험", en: "Diverse aspects and experiences"}
+                    },
+                    {
+                        emoji: "🌱", 
+                        title: {ko: "성장", en: "Growth"}, 
+                        text: {ko: "끊임없이 발전하는 관계", en: "Continuously developing relationship"}
+                    }
+                ],
+                compatibilityScore: 93
+            },
+            {
+                type: "🎪",
+                name: {
+                    ko: "즐거운 축제형",
+                    en: "Joyful Festival Type"
+                },
+                description: {
+                    ko: "축제처럼 즐겁고 활기찬 소울메이트입니다. 함께 있으면 매일이 파티 같고 웃음이 끊이지 않을 거예요.",
+                    en: "A joyful and vibrant soulmate like a festival. Being together will make every day feel like a party with endless laughter."
+                },
+                meeting: {
+                    timing: {
+                        ko: "축제나 이벤트가 있는 시기",
+                        en: "Festival or event seasons"
+                    },
+                    location: {
+                        ko: "축제장, 놀이공원, 파티장",
+                        en: "Festival grounds, amusement parks, party venues"
+                    },
+                    method: {
+                        ko: "신나는 분위기에서 자연스럽게",
+                        en: "Naturally in exciting atmospheres"
+                    },
+                    signal: {
+                        ko: "밝은 에너지와 전염성 있는 웃음",
+                        en: "Bright energy and contagious laughter"
+                    }
+                },
+                story: {
+                    ko: "매일을 축제처럼 만드는 마법 같은 능력을 가진 사람입니다. 함께 있으면 일상의 걱정이 사라지고 삶이 즐거워질 거예요. 서로를 웃게 만들며 행복한 추억을 쌓아가는 유쾌한 관계가 될 것입니다.",
+                    en: "A person with the magical ability to make every day feel like a festival. Being together will make daily worries disappear and life become enjoyable. You'll create a cheerful relationship where you make each other laugh and build happy memories."
+                },
+                traits: [
+                    {
+                        emoji: "🎪", 
+                        title: {ko: "즐거움", en: "Joy"}, 
+                        text: {ko: "모든 순간을 즐겁게 만드는 능력", en: "Ability to make every moment enjoyable"}
+                    },
+                    {
+                        emoji: "🎉", 
+                        title: {ko: "축제 분위기", en: "Festival Atmosphere"}, 
+                        text: {ko: "어디서나 파티 분위기 연출", en: "Creates party atmosphere anywhere"}
+                    },
+                    {
+                        emoji: "🤡", 
+                        title: {ko: "유머감각", en: "Sense of Humor"}, 
+                        text: {ko: "뛰어난 유머와 재치", en: "Excellent humor and wit"}
+                    },
+                    {
+                        emoji: "🎊", 
+                        title: {ko: "활기", en: "Vitality"}, 
+                        text: {ko: "넘치는 에너지와 활력", en: "Overflowing energy and vitality"}
+                    }
+                ],
+                compatibilityScore: 88
+            }
+        ];
+
+        // 카카오 SDK 초기화
+        if (typeof Kakao !== 'undefined') {
+            Kakao.init('YOUR_KAKAO_APP_KEY');
+        }
+
+        // 언어 변경 함수
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            
+            // 언어 버튼 활성화 상태 변경
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(lang + 'Btn').classList.add('active');
+            
+            // HTML lang 속성 변경
+            document.getElementById('htmlRoot').lang = lang;
+            
+            // 페이지 텍스트 업데이트
+            updatePageTexts();
+            
+            // 드롭다운 옵션 업데이트
+            updateDropdownOptions();
+            
+            // 공유 버튼 표시/숨김 (카카오톡은 한국어일 때만)
+            updateShareButtons();
+            
+            // 로컬 스토리지에 언어 설정 저장
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        // 페이지 텍스트 업데이트
+        function updatePageTexts() {
+            const t = translations[currentLanguage];
+            
+            // 메타 정보 업데이트 (안전하게)
+            const pageTitle = document.getElementById('pageTitle');
+            const pageDesc = document.getElementById('pageDesc');
+            const ogTitle = document.getElementById('ogTitle');
+            const ogDesc = document.getElementById('ogDesc');
+            
+            if (pageTitle) pageTitle.textContent = t.pageTitle;
+            if (pageDesc) pageDesc.setAttribute('content', t.pageDescription);
+            if (ogTitle) ogTitle.setAttribute('content', t.ogTitle);
+            if (ogDesc) ogDesc.setAttribute('content', t.ogDescription);
+            document.title = t.pageTitle;
+            
+            // 안전한 텍스트 업데이트 함수
+            function safeUpdateText(id, text) {
+                const element = document.getElementById(id);
+                if (element) element.textContent = text;
+            }
+            
+            // 메인 헤더
+            safeUpdateText('mainTitle', t.mainTitle);
+            safeUpdateText('mainSubtitle', t.mainSubtitle);
+            safeUpdateText('stat1', t.stat1);
+            safeUpdateText('stat2', t.stat2);
+            safeUpdateText('stat3', t.stat3);
+            
+            // 업로드 섹션
+            safeUpdateText('uploadTitle', t.uploadTitle);
+            safeUpdateText('uploadDesc', t.uploadDesc);
+            safeUpdateText('uploadHint', t.uploadHint);
+            safeUpdateText('uploadText', t.uploadText);
+            safeUpdateText('uploadSubtext', t.uploadSubtext);
+            safeUpdateText('changePhotoBtn', t.changePhotoBtn);
+            
+            // 정보 입력 섹션
+            safeUpdateText('infoTitle', t.infoTitle);
+            safeUpdateText('infoDesc', t.infoDesc);
+            
+            // 폼 라벨들
+            safeUpdateText('genderLabel', t.genderLabel);
+            safeUpdateText('ageLabel', t.ageLabel);
+            safeUpdateText('locationLabel', t.locationLabel);
+            safeUpdateText('personalityLabel', t.personalityLabel);
+            safeUpdateText('hobbyLabel', t.hobbyLabel);
+            safeUpdateText('idealTypeLabel', t.idealTypeLabel);
+            
+            safeUpdateText('analyzeBtn', t.analyzeBtn);
+            
+            // 로딩
+            safeUpdateText('loadingTitle', t.loadingTitle);
+            safeUpdateText('loadingDesc', t.loadingDesc);
+            
+            // 결과
+            safeUpdateText('resultTitle', t.resultTitle);
+            safeUpdateText('meetingTitle', t.meetingTitle);
+            safeUpdateText('timingLabel', t.timingLabel);
+            safeUpdateText('locationMeetingLabel', t.locationMeetingLabel);
+            safeUpdateText('methodLabel', t.methodLabel);
+            safeUpdateText('signalLabel', t.signalLabel);
+            safeUpdateText('storyTitle', t.storyTitle);
+            safeUpdateText('traitsTitle', t.traitsTitle);
+            
+            // 공유 버튼
+            safeUpdateText('shareKakao', t.shareKakao);
+            safeUpdateText('shareInstagram', t.shareInstagram);
+            safeUpdateText('shareFacebook', t.shareFacebook);
+            safeUpdateText('shareTwitter', t.shareTwitter);
+            safeUpdateText('shareWhatsapp', t.shareWhatsapp);
+            safeUpdateText('shareGeneral', t.shareGeneral);
+            safeUpdateText('retakeBtn', t.retakeBtn);
+            safeUpdateText('saveBtn', t.saveBtn);
+            
+            // 연관 테스트
+            safeUpdateText('relatedTestsTitle', t.relatedTestsTitle);
+            safeUpdateText('relatedTest1', t.relatedTest1);
+            safeUpdateText('relatedDesc1', t.relatedDesc1);
+            safeUpdateText('relatedTest2', t.relatedTest2);
+            safeUpdateText('relatedDesc2', t.relatedDesc2);
+            safeUpdateText('relatedTest3', t.relatedTest3);
+            safeUpdateText('relatedDesc3', t.relatedDesc3);
+            
+            // 푸터
+            safeUpdateText('footerTitle', t.footerTitle);
+            safeUpdateText('footerSubtitle', t.footerSubtitle);
+            safeUpdateText('contactLink', t.contactLink);
+            safeUpdateText('privacyLink', t.privacyLink);
+            safeUpdateText('termsLink', t.termsLink);
+            safeUpdateText('copyright', t.copyright);
+            safeUpdateText('floatingCta', t.floatingCta);
+        }
+
+        // 드롭다운 옵션 업데이트
+        function updateDropdownOptions() {
+            const t = translations[currentLanguage];
+            
+            // 안전한 HTML 업데이트 함수
+            function safeUpdateHTML(id, html) {
+                const element = document.getElementById(id);
+                if (element) element.innerHTML = html;
+            }
+            
+            // 성별
+            safeUpdateHTML('genderSelect', `
+                <option value="">${t.genderPlaceholder}</option>
+                <option value="Male">${t.genderMale}</option>
+                <option value="Female">${t.genderFemale}</option>
+                <option value="Non-binary">${t.genderNonBinary}</option>
+            `);
+            
+            // 연령대
+            safeUpdateHTML('ageSelect', `
+                <option value="">${t.agePlaceholder}</option>
+                <option value="Teens">${t.ageTeens}</option>
+                <option value="20s">${t.age20s}</option>
+                <option value="30s">${t.age30s}</option>
+                <option value="40s">${t.age40s}</option>
+                <option value="50s">${t.age50s}</option>
+                <option value="60+">${t.age60plus}</option>
+            `);
+            
+            // 지역
+            const locationSelect = document.getElementById('locationSelect');
+            if (locationSelect) {
+                locationSelect.innerHTML = `<option value="">${t.locationPlaceholder}</option>`;
+                t.locations.forEach(loc => {
+                    locationSelect.innerHTML += `<option value="${loc.value}">${loc.text}</option>`;
+                });
+            }
+            
+            // 성격
+            const personalitySelect = document.getElementById('personalitySelect');
+            if (personalitySelect) {
+                personalitySelect.innerHTML = `<option value="">${t.personalityPlaceholder}</option>`;
+                t.personalities.forEach(p => {
+                    personalitySelect.innerHTML += `<option value="${p.value}">${p.text}</option>`;
+                });
+            }
+            
+            // 취미
+            const hobbySelect = document.getElementById('hobbySelect');
+            if (hobbySelect) {
+                hobbySelect.innerHTML = `<option value="">${t.hobbyPlaceholder}</option>`;
+                t.hobbies.forEach(h => {
+                    hobbySelect.innerHTML += `<option value="${h.value}">${h.text}</option>`;
+                });
+            }
+            
+            // 이상형
+            const idealTypeSelect = document.getElementById('idealTypeSelect');
+            if (idealTypeSelect) {
+                idealTypeSelect.innerHTML = `<option value="">${t.idealTypePlaceholder}</option>`;
+                t.idealTypes.forEach(i => {
+                    idealTypeSelect.innerHTML += `<option value="${i.value}">${i.text}</option>`;
+                });
+            }
+        }
+
+        // 공유 버튼 표시/숨김
+        function updateShareButtons() {
+            const kakaoBtn = document.getElementById('shareKakao');
+            if (kakaoBtn) {
+                if (currentLanguage === 'ko') {
+                    kakaoBtn.style.display = 'inline-block';
+                } else {
+                    kakaoBtn.style.display = 'none';
+                }
+            }
+        }
+
+        // 분석 버튼 활성화 체크
+        function checkAnalyzeButton() {
+            const hasImage = window.currentImageData;
+            const genderSelect = document.getElementById('genderSelect');
+            const ageSelect = document.getElementById('ageSelect');
+            const locationSelect = document.getElementById('locationSelect');
+            const personalitySelect = document.getElementById('personalitySelect');
+            const hobbySelect = document.getElementById('hobbySelect');
+            const idealTypeSelect = document.getElementById('idealTypeSelect');
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            
+            if (!genderSelect || !ageSelect || !locationSelect || !personalitySelect || !hobbySelect || !idealTypeSelect || !analyzeBtn) {
+                return; // 요소들이 아직 로드되지 않았으면 리턴
+            }
+            
+            const hasGender = genderSelect.value;
+            const hasAge = ageSelect.value;
+            const hasLocation = locationSelect.value;
+            const hasPersonality = personalitySelect.value;
+            const hasHobby = hobbySelect.value;
+            const hasIdealType = idealTypeSelect.value;
+            
+            analyzeBtn.disabled = !(hasImage && hasGender && hasAge && hasLocation && hasPersonality && hasHobby && hasIdealType);
+        }
+
+        // 이미지 업로드 처리
+        document.getElementById('imageUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const t = translations[currentLanguage];
+            
+            if (file) {
+                if (!file.type.startsWith('image/')) {
+                    alert(t.imageOnlyAlert);
+                    return;
+                }
+                
+                if (file.size > 10 * 1024 * 1024) {
+                    alert(t.fileSizeAlert);
+                    return;
+                }
+                
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const previewImage = document.getElementById('previewImage');
+                    const previewContainer = document.getElementById('previewContainer');
+                    const uploadArea = document.getElementById('uploadArea');
+                    
+                    previewImage.src = e.target.result;
+                    previewContainer.style.display = 'block';
+                    uploadArea.style.display = 'none';
+                    
+                    window.currentImageData = e.target.result;
+                    
+                    previewImage.onload = function() {
+                        checkAnalyzeButton();
+                        previewContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    };
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // 사진 변경 함수
+        function changePhoto() {
+            const uploadArea = document.getElementById('uploadArea');
+            const previewContainer = document.getElementById('previewContainer');
+            
+            uploadArea.style.display = 'block';
+            previewContainer.style.display = 'none';
+            
+            document.getElementById('imageUpload').value = '';
+            window.currentImageData = null;
+            checkAnalyzeButton();
+        }
+
+        // 업로드 영역 클릭 이벤트
+        document.getElementById('uploadArea').addEventListener('click', function() {
+            document.getElementById('imageUpload').click();
+        });
+
+        // 드래그 앤 드롭 기능
+        const uploadArea = document.getElementById('uploadArea');
+        
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadArea.classList.add('dragover');
+        });
+        
+        uploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadArea.classList.remove('dragover');
+        });
+        
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadArea.classList.remove('dragover');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                const file = files[0];
+                const t = translations[currentLanguage];
+                
+                if (!file.type.startsWith('image/')) {
+                    alert(t.imageOnlyAlert);
+                    return;
+                }
+                
+                const fileInput = document.getElementById('imageUpload');
+                const dt = new DataTransfer();
+                dt.items.add(file);
+                fileInput.files = dt.files;
+                
+                const event = new Event('change', { bubbles: true });
+                fileInput.dispatchEvent(event);
+            }
+        });
+
+        // 입력 필드 이벤트 리스너들 (안전하게)
+        function setupEventListeners() {
+            const elements = [
+                'genderSelect', 'ageSelect', 'locationSelect', 
+                'personalitySelect', 'hobbySelect', 'idealTypeSelect'
+            ];
+            
+            elements.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener('change', checkAnalyzeButton);
+                }
+            });
+        }
+
+        // 사용 제한 관리
+        let testCount = 0;
+        let lastTestTime = 0;
+        const TEST_COOLDOWN = 3000;
+        const DAILY_LIMIT = 8;
+
+        function getTodayTestCount() {
+            const today = new Date().toDateString();
+            const stored = localStorage.getItem('soulmateTestData');
+            
+            if (stored) {
+                const data = JSON.parse(stored);
+                if (data.date === today) {
+                    return data.count;
+                }
+            }
+            return 0;
+        }
+
+        function saveTodayTestCount(count) {
+            const today = new Date().toDateString();
+            const data = { date: today, count: count };
+            localStorage.setItem('soulmateTestData', JSON.stringify(data));
+        }
+
+        function canTest() {
+            const now = Date.now();
+            const todayCount = getTodayTestCount();
+            const t = translations[currentLanguage];
+            
+            if (now - lastTestTime < TEST_COOLDOWN) {
+                const remaining = Math.ceil((TEST_COOLDOWN - (now - lastTestTime)) / 1000);
+                alert(t.cooldownAlert.replace('{0}', remaining));
+                return false;
+            }
+            
+            if (todayCount >= DAILY_LIMIT) {
+                return confirm(t.analysisCountAlert.replace('{0}', todayCount + 1) + '\n\nDo you still want to continue?');
+            }
+            
+            return true;
+        }
+
+        // 간단한 해시 함수
+        function simpleHash(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                const char = str.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash;
+            }
+            return Math.abs(hash);
+        }
+
+        // 소울메이트 결과 결정 함수
+        function getSoulmateFromData(imageData, gender, age, location, personality, hobby, idealType) {
+            const combinedData = (imageData || '') + gender + age + location + personality + hobby + idealType;
+            const hash = simpleHash(combinedData);
+            
+            const resultIndex = hash % soulmateData.length;
+            return soulmateData[resultIndex];
+        }
+
+        // 소울메이트 분석
+        function findSoulmate() {
+            const t = translations[currentLanguage];
+            
+            if (!canTest()) {
+                return;
+            }
+            
+            if (!window.currentImageData) {
+                alert(t.uploadImageFirst);
+                return;
+            }
+            
+            const genderSelect = document.getElementById('genderSelect');
+            const ageSelect = document.getElementById('ageSelect');
+            const locationSelect = document.getElementById('locationSelect');
+            const personalitySelect = document.getElementById('personalitySelect');
+            const hobbySelect = document.getElementById('hobbySelect');
+            const idealTypeSelect = document.getElementById('idealTypeSelect');
+            
+            if (!genderSelect || !ageSelect || !locationSelect || !personalitySelect || !hobbySelect || !idealTypeSelect) {
+                alert(t.fillAllInfo);
+                return;
+            }
+            
+            const gender = genderSelect.value;
+            const age = ageSelect.value;
+            const location = locationSelect.value;
+            const personality = personalitySelect.value;
+            const hobby = hobbySelect.value;
+            const idealType = idealTypeSelect.value;
+            
+            if (!gender || !age || !location || !personality || !hobby || !idealType) {
+                alert(t.fillAllInfo);
+                return;
+            }
+            
+            const loadingElement = document.getElementById('loading');
+            const inputSection = document.querySelector('.input-section');
+            
+            if (loadingElement) loadingElement.style.display = 'block';
+            if (inputSection) inputSection.style.display = 'none';
+            
+            const todayCount = getTodayTestCount() + 1;
+            saveTodayTestCount(todayCount);
+            lastTestTime = Date.now();
+            
+            setTimeout(() => {
+                const selectedResult = getSoulmateFromData(
+                    window.currentImageData, 
+                    gender, 
+                    age, 
+                    location, 
+                    personality, 
+                    hobby, 
+                    idealType
+                );
+                
+                // 결과 표시 (다국어 지원, 안전하게)
+                const soulmateTypeEl = document.getElementById('soulmateType');
+                const soulmateNameEl = document.getElementById('soulmateName');
+                const soulmateDescEl = document.getElementById('soulmateDescription');
+                const compatibilityScoreEl = document.getElementById('compatibilityScore');
+                const meetingPredictionEl = document.getElementById('meetingPredictionText');
+                
+                if (soulmateTypeEl) soulmateTypeEl.textContent = selectedResult.type;
+                if (soulmateNameEl) soulmateNameEl.textContent = selectedResult.name[currentLanguage];
+                if (soulmateDescEl) soulmateDescEl.textContent = selectedResult.description[currentLanguage];
+                if (compatibilityScoreEl) compatibilityScoreEl.textContent = t.compatibilityScore.replace('{0}', selectedResult.compatibilityScore);
+                if (meetingPredictionEl) meetingPredictionEl.textContent = selectedResult.story[currentLanguage];
+                
+                // 만남 상세 정보 업데이트
+                const timingTextEl = document.getElementById('timingText');
+                const locationTextEl = document.getElementById('locationText');
+                const methodTextEl = document.getElementById('methodText');
+                const signalTextEl = document.getElementById('signalText');
+                
+                if (timingTextEl) timingTextEl.textContent = selectedResult.meeting.timing[currentLanguage];
+                if (locationTextEl) locationTextEl.textContent = selectedResult.meeting.location[currentLanguage];
+                if (methodTextEl) methodTextEl.textContent = selectedResult.meeting.method[currentLanguage];
+                if (signalTextEl) signalTextEl.textContent = selectedResult.meeting.signal[currentLanguage];
+                
+                // 특징 표시
+                const traitsGrid = document.getElementById('traitsGrid');
+                if (traitsGrid) {
+                    traitsGrid.innerHTML = '';
+                    selectedResult.traits.forEach(trait => {
+                        const item = document.createElement('div');
+                        item.className = 'trait-item';
+                        item.innerHTML = `
+                            <div class="trait-emoji">${trait.emoji}</div>
+                            <div class="trait-title">${trait.title[currentLanguage]}</div>
+                            <div class="trait-text">${trait.text[currentLanguage]}</div>
+                        `;
+                        traitsGrid.appendChild(item);
+                    });
+                }
+                
+                window.currentSoulmateResult = selectedResult;
+                window.currentUserInfo = { gender, age, location, personality, hobby, idealType };
+                
+                if (loadingElement) loadingElement.style.display = 'none';
+                const resultSection = document.getElementById('resultSection');
+                if (resultSection) {
+                    resultSection.style.display = 'block';
+                    
+                    if (todayCount >= 3) {
+                        const countMessage = document.createElement('div');
+                        countMessage.style.cssText = `
+                            background: linear-gradient(45deg, #FFE4E6, #FFF0F5);
+                            padding: 0.5rem 1rem;
+                            border-radius: 15px;
+                            margin: 1rem 0;
+                            font-size: 0.9rem;
+                            color: #FF1493;
+                            border: 1px solid rgba(255,105,180,0.3);
+                        `;
+                        countMessage.innerHTML = t.analysisCountAlert.replace('{0}', todayCount);
+                        
+                        resultSection.insertBefore(countMessage, resultSection.children[1]);
+                    }
+                    
+                    resultSection.scrollIntoView({behavior: 'smooth'});
+                }
+            }, 4500);
+        }
+
+        // 공유 함수들
+        function shareToKakao() {
+            const t = translations[currentLanguage];
+            if (!window.currentSoulmateResult) {
+                alert(t.completeAnalysisFirst);
+                return;
+            }
+
+            const shareText = `💕 소울메이트 찾기 결과!\n\n${window.currentSoulmateResult.type} ${window.currentSoulmateResult.name.ko}\n\n${window.currentSoulmateResult.description.ko}\n\n💖 궁합도: ${window.currentSoulmateResult.compatibilityScore}%\n\n나도 분석해보기: ${window.location.href}`;
+            
+            if (typeof Kakao !== 'undefined' && Kakao.isInitialized && Kakao.isInitialized()) {
+                try {
+                    Kakao.Share.sendDefault({
+                        objectType: 'feed',
+                        content: {
+                            title: '💕 소울메이트 찾기 결과!',
+                            description: `${window.currentSoulmateResult.type} ${window.currentSoulmateResult.name.ko}\n💖 궁합도: ${window.currentSoulmateResult.compatibilityScore}%`,
+                            imageUrl: 'https://your-domain.com/soulmate-og.jpg',
+                            link: {
+                                mobileWebUrl: window.location.href,
+                                webUrl: window.location.href,
+                            },
+                        },
+                    });
+                } catch (error) {
+                    copyToClipboard(shareText);
+                }
+            } else {
+                copyToClipboard(shareText);
+            }
+        }
+
+        function shareToFacebook() {
+            const t = translations[currentLanguage];
+            if (!window.currentSoulmateResult) {
+                alert(t.completeAnalysisFirst);
+                return;
+            }
+
+            const shareUrl = encodeURIComponent(window.location.href);
+            const shareText = encodeURIComponent(`💕 My soulmate is ${window.currentSoulmateResult.type} ${window.currentSoulmateResult.name[currentLanguage]}! Compatibility ${window.currentSoulmateResult.compatibilityScore}%`);
+            
+            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${shareText}`;
+            window.open(facebookUrl, '_blank', 'width=600,height=400');
+        }
+
+        function shareToTwitter() {
+            const t = translations[currentLanguage];
+            if (!window.currentSoulmateResult) {
+                alert(t.completeAnalysisFirst);
+                return;
+            }
+
+            const shareText = encodeURIComponent(`💕 Soulmate Result: ${window.currentSoulmateResult.type} ${window.currentSoulmateResult.name[currentLanguage]}! Compatibility ${window.currentSoulmateResult.compatibilityScore}% ✨`);
+            const shareUrl = encodeURIComponent(window.location.href);
+            const hashtags = encodeURIComponent('Soulmate,DestinyLove,AITest,LoveTest');
+            
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}&hashtags=${hashtags}`;
+            window.open(twitterUrl, '_blank', 'width=600,height=400');
+        }
+
+        function shareToWhatsApp() {
+            const t = translations[currentLanguage];
+            if (!window.currentSoulmateResult) {
+                alert(t.completeAnalysisFirst);
+                return;
+            }
+
+            const shareText = encodeURIComponent(`💕 Soulmate Result!\n\n${window.currentSoulmateResult.type} ${window.currentSoulmateResult.name[currentLanguage]}\n\n${window.currentSoulmateResult.description[currentLanguage]}\n\n💖 Compatibility: ${window.currentSoulmateResult.compatibilityScore}%\n\nTry yours: ${window.location.href}`);
+            
+            const whatsappUrl = `https://wa.me/?text=${shareText}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function shareToInstagram() {
+            const t = translations[currentLanguage];
+            if (!window.currentSoulmateResult) {
+                alert(t.completeAnalysisFirst);
+                return;
+            }
+            
+            // 간단한 이미지 다운로드 구현
+            const canvas = document.createElement('canvas');
+            canvas.width = 600;
+            canvas.height = 800;
+            const ctx = canvas.getContext('2d');
+            
+            // 배경
+            const gradient = ctx.createLinearGradient(0, 0, 0, 800);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#f093fb');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 600, 800);
+            
+            // 텍스트
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 48px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('💕 Soulmate Test', 300, 100);
+            ctx.font = '72px Arial';
+            ctx.fillText(window.currentSoulmateResult.type, 300, 250);
+            ctx.font = 'bold 36px Arial';
+            ctx.fillText(window.currentSoulmateResult.name[currentLanguage], 300, 350);
+            ctx.font = 'bold 32px Arial';
+            ctx.fillText(`Compatibility: ${window.currentSoulmateResult.compatibilityScore}%`, 300, 450);
+            
+            const link = document.createElement('a');
+            link.download = `Soulmate_${window.currentSoulmateResult.name[currentLanguage].replace(/\s+/g, '_')}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            
+            alert(t.imageDownloaded);
+        }
+
+        function shareGeneral() {
+            const t = translations[currentLanguage];
+            if (!window.currentSoulmateResult) {
+                alert(t.completeAnalysisFirst);
+                return;
+            }
+
+            const shareText = `💕 Soulmate Result!\n\n${window.currentSoulmateResult.type} ${window.currentSoulmateResult.name[currentLanguage]}\n\n${window.currentSoulmateResult.description[currentLanguage]}\n\n💖 Compatibility: ${window.currentSoulmateResult.compatibilityScore}%\n\nTry yours: ${window.location.href}`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: '💕 Soulmate Finder',
+                    text: shareText,
+                    url: window.location.href
+                }).catch(error => {
+                    copyToClipboard(shareText);
+                });
+            } else {
+                copyToClipboard(shareText);
+            }
+        }
+
+        // 클립보드에 복사
+        function copyToClipboard(text) {
+            const t = translations[currentLanguage];
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert(t.resultCopied);
+                }).catch(error => {
+                    fallbackCopyToClipboard(text);
+                });
+            } else {
+                fallbackCopyToClipboard(text);
+            }
+        }
+
+        function fallbackCopyToClipboard(text) {
+            const t = translations[currentLanguage];
+            try {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                textArea.style.top = '-999999px';
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                if (successful) {
+                    alert(t.resultCopied);
+                } else {
+                    alert(t.copyFailed);
+                }
+            } catch (error) {
+                alert(t.copyFailed);
+            }
+        }
+
+        function retakeTest() {
+            const resultSection = document.getElementById('resultSection');
+            const inputSection = document.querySelector('.input-section');
+            
+            if (resultSection) resultSection.style.display = 'none';
+            if (inputSection) inputSection.style.display = 'block';
+            
+            // 이미지 관련 초기화
+            const imageUpload = document.getElementById('imageUpload');
+            const previewContainer = document.getElementById('previewContainer');
+            const uploadArea = document.getElementById('uploadArea');
+            
+            if (imageUpload) imageUpload.value = '';
+            if (previewContainer) previewContainer.style.display = 'none';
+            if (uploadArea) uploadArea.style.display = 'block';
+            
+            // 입력 필드 초기화
+            const selects = ['genderSelect', 'ageSelect', 'locationSelect', 'personalitySelect', 'hobbySelect', 'idealTypeSelect'];
+            selects.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) element.value = '';
+            });
+            
+            window.currentImageData = null;
+            window.currentSoulmateResult = null;
+            window.currentUserInfo = null;
+            
+            checkAnalyzeButton();
+        }
+
+        function saveResult() {
+            const t = translations[currentLanguage];
+            if (!window.currentSoulmateResult) {
+                alert(t.noResultToSave);
+                return;
+            }
+            
+            const resultData = {
+                soulmateResult: window.currentSoulmateResult,
+                userInfo: window.currentUserInfo,
+                timestamp: new Date().toISOString(),
+                language: currentLanguage,
+                url: window.location.href
+            };
+            
+            try {
+                localStorage.setItem('soulmateResult', JSON.stringify(resultData));
+                alert(t.resultSaved);
+            } catch (e) {
+                alert(t.saveResultFailed);
+            }
+        }
+
+        function scrollToInput() {
+            const inputSection = document.querySelector('.input-section');
+            if (inputSection) {
+                inputSection.scrollIntoView({behavior: 'smooth'});
+            }
+        }
+
+        // 페이지 로드 시 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            // 저장된 언어 설정 불러오기
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'ko';
+            
+            // 약간의 지연을 두어 DOM이 완전히 로드된 후 실행
+            setTimeout(() => {
+                changeLanguage(savedLanguage);
+                
+                // 이벤트 리스너 설정
+                setupEventListeners();
+                
+                // 초기 버튼 상태 체크
+                checkAnalyzeButton();
+                
+                // URL 파라미터로 언어 변경 지원
+                const urlParams = new URLSearchParams(window.location.search);
+                const langParam = urlParams.get('lang');
+                if (langParam && (langParam === 'ko' || langParam === 'en')) {
+                    changeLanguage(langParam);
+                }
+            }, 100);
+        });
+
+        // 브라우저 뒤로가기/앞으로가기 시 언어 상태 유지
+        window.addEventListener('popstate', function() {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'ko';
+            changeLanguage(savedLanguage);
+        });
+    </script>
+</body>
 </html>
+                
+            
