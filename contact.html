@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의하기 | 소울메이트 찾기</title>
+    <meta name="description" content="소울메이트 찾기 서비스 문의 및 고객지원">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #ff9a56, #fad0c4);
+            margin: -20px -20px 40px -20px;
+            border-radius: 20px 20px 0 0;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .contact-card h3 {
+            color: #ff9a56;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-form {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #dee2e6;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff9a56;
+            box-shadow: 0 0 10px rgba(255, 154, 86, 0.2);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #ff9a56, #fad0c4);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(255, 154, 86, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 154, 86, 0.4);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .faq-section {
+            margin-bottom: 40px;
+        }
+
+        .faq-item {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: linear-gradient(135deg, #ff9a56, #fad0c4);
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-question:hover {
+            background: linear-gradient(135deg, #ff8940, #f9c5b8);
+        }
+
+        .faq-answer {
+            padding: 20px;
+            display: none;
+            line-height: 1.6;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff9a56, #fad0c4);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 154, 86, 0.3);
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 154, 86, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+            color: #666;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #28a745;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #dc3545;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .response-time {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header {
+                margin: -15px -15px 30px -15px;
+                padding: 20px 15px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .contact-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📞 문의하기</h1>
+            <p>궁금한 점이나 도움이 필요하시면 언제든지 연락주세요!</p>
+        </div>
+
+        <!-- 응답 시간 안내 -->
+        <div class="response-time">
+            <strong>⏰ 응답 시간 안내</strong><br>
+            평일 09:00-18:00 내 문의는 당일 답변, 그 외 시간대는 다음 영업일에 답변드립니다.
+        </div>
+
+        <!-- 연락처 정보 -->
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3><span class="emoji">📧</span>이메일 문의</h3>
+                <p><strong>일반 문의:</strong> support@soulmatefinder.co.kr</p>
+                <p><strong>개인정보 관련:</strong> privacy@soulmatefinder.co.kr</p>
+                <p><strong>기업 제휴:</strong> business@soulmatefinder.co.kr</p>
+                <p style="margin-top: 15px; color: #666; font-size: 0.9rem;">
+                    💡 가장 빠른 답변을 받으실 수 있습니다
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <h3><span class="emoji">💬</span>실시간 채팅</h3>
+                <p><strong>운영시간:</strong> 평일 09:00-18:00</p>
+                <p><strong>응답시간:</strong> 평균 5분 이내</p>
+                <button onclick="openChat()" style="margin-top: 15px; background: #ff9a56; color: white; padding: 10px 20px; border: none; border-radius: 20px; cursor: pointer;">
+                    💬 채팅 시작하기
+                </button>
+            </div>
+
+            <div class="contact-card">
+                <h3><span class="emoji">📱</span>소셜미디어</h3>
+                <p><strong>인스타그램:</strong> @soulmatefinder_official</p>
+                <p><strong>트위터:</strong> @soulmatefinder</p>
+                <p><strong>페이스북:</strong> facebook.com/soulmatefinder</p>
+                <p style="margin-top: 15px; color: #666; font-size: 0.9rem;">
+                    📢 최신 소식과 이벤트 정보를 받아보세요
+                </p>
+            </div>
+        </div>
+
+        <!-- 문의 폼 -->
+        <div class="contact-form">
+            <h2 style="color: #ff9a56; margin-bottom: 20px;">📝 문의 작성하기</h2>
+            
+            <div class="success-message" id="successMessage">
+                <strong>✅ 문의가 성공적으로 전송되었습니다!</strong><br>
+                빠른 시일 내에 답변드리겠습니다.
+            </div>
+            
+            <div class="error-message" id="errorMessage">
+                <strong>❌ 문의 전송에 실패했습니다.</strong><br>
+                다시 시도하거나 이메일로 직접 연락해주세요.
+            </div>
+
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="inquiryType">문의 유형 <span class="required">*</span></label>
+                    <select id="inquiryType" name="inquiryType" required>
+                        <option value="">문의 유형을 선택해주세요</option>
+                        <option value="service">서비스 이용 문의</option>
+                        <option value="technical">기술적 문제</option>
+                        <option value="privacy">개인정보 관련</option>
+                        <option value="business">사업 제휴</option>
+                        <option value="suggestion">개선 제안</option>
+                        <option value="complaint">불만 신고</option>
+                        <option value="other">기타</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">이름 <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required placeholder="실명 또는 닉네임을 입력해주세요">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">이메일 <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="답변받을 이메일 주소를 입력해주세요">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">제목 <span class="required">*</span></label>
+                    <input type="text" id="subject" name="subject" required placeholder="문의 제목을 간단히 입력해주세요">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">문의 내용 <span class="required">*</span></label>
+                    <textarea id="message" name="message" required placeholder="문의하실 내용을 자세히 작성해주세요. 문제 발생 시 상황을 구체적으로 설명해주시면 더 정확한 답변을 드릴 수 있습니다."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">연락처 (선택사항)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="긴급한 경우 연락받을 전화번호 (선택사항)">
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    📤 문의 보내기
+                </button>
+            </form>
+        </div>
+
+        <!-- FAQ 섹션 -->
+        <div class="faq-section">
+            <h2 style="color: #ff9a56; margin-bottom: 20px; text-align: center;">❓ 자주 묻는 질문</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(1)">
+                    <span class="emoji">🔮</span>
+                    분석 결과가 정확한가요?
+                    <span style="margin-left: auto;">▼</span>
+                </div>
+                <div class="faq-answer" id="faq1">
+                    <p>소울메이트 찾기는 <strong>엔터테인먼트 목적</strong>의 서비스입니다. AI가 얼굴 특징을 분석하여 재미있는 결과를 제공하지만, 과학적 근거나 실제 미래 예측을 보장하지는 않습니다.</p>
+                    <p>💡 <strong>즐거운 경험</strong>과 <strong>흥미로운 결과</strong>를 위한 서비스로 이용해주세요!</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(2)">
+                    <span class="emoji">🔒</span>
+                    업로드한 사진은 안전한가요?
+                    <span style="margin-left: auto;">▼</span>
+                </div>
+                <div class="faq-answer" id="faq2">
+                    <p>업로드하신 사진은 <strong>분석 완료 즉시 자동 삭제</strong>됩니다. 서버에 저장되지 않으며, 제3자에게 제공되지 않습니다.</p>
+                    <p>🛡️ 모든 데이터는 <strong>HTTPS 암호화</strong>로 전송되어 안전하게 보호됩니다.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(3)">
+                    <span class="emoji">💰</span>
+                    서비스 이용료가 있나요?
+                    <span style="margin-left: auto;">▼</span>
+                </div>
+                <div class="faq-answer" id="faq3">
+                    <p>기본 분석은 <strong>완전 무료</strong>입니다! 추가 기능이나 상세 분석을 원하시면 프리미엄 옵션을 이용하실 수 있습니다.</p>
+                    <p>💝 무료 서비스만으로도 충분히 재미있는 결과를 확인하실 수 있어요.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(4)">
+                    <span class="emoji">📱</span>
+                    모바일에서도 이용할 수 있나요?
+                    <span style="margin-left: auto;">▼</span>
+                </div>
+                <div class="faq-answer" id="faq4">
+                    <p>네! 모든 기기에서 이용 가능합니다. 웹브라우저만 있으면 <strong>스마트폰, 태블릿, PC</strong> 어디서든 이용하실 수 있습니다.</p>
+                    <p>📲 모바일에 최적화되어 있어 더욱 편리하게 이용하실 수 있어요.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(5)">
+                    <span class="emoji">🔄</span>
+                    결과가 마음에 들지 않아요.
+                    <span style="margin-left: auto;">▼</span>
+                </div>
+                <div class="faq-answer" id="faq5">
+                    <p>다른 사진으로 <strong>다시 분석</strong>해보세요! 사진 각도, 표정, 조명에 따라 결과가 달라질 수 있습니다.</p>
+                    <p>😊 정면을 바라보는 밝고 선명한 사진일수록 더 재미있는 결과를 얻을 수 있어요.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(6)">
+                    <span class="emoji">🎁</span>
+                    친구와 함께 이용할 수 있나요?
+                    <span style="margin-left: auto;">▼</span>
+                </div>
+                <div class="faq-answer" id="faq6">
+                    <p>물론입니다! 결과를 <strong>SNS에 공유</strong>하거나 친구들과 함께 테스트해보세요. 더 재미있는 경험이 될 거예요!</p>
+                    <p>👫 친구들과 서로의 결과를 비교해보는 것도 즐거운 추억이 될 수 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(7)">
+                    <span class="emoji">⚠️</span>
+                    오류가 발생했어요.
+                    <span style="margin-left: auto;">▼</span>
+                </div>
+                <div class="faq-answer" id="faq7">
+                    <p>다음 사항을 확인해주세요:</p>
+                    <ul style="margin-top: 10px;">
+                        <li>📸 이미지 파일 형식 (JPG, PNG, GIF만 지원)</li>
+                        <li>📏 파일 크기 (10MB 이하)</li>
+                        <li>🌐 인터넷 연결 상태</li>
+                        <li>🔄 페이지 새로고침 후 재시도</li>
+                    </ul>
+                    <p>문제가 계속되면 위의 문의 양식으로 상황을 알려주세요.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 추가 도움말 -->
+        <div style="background: linear-gradient(135deg, #f8f9fa, #ffffff); padding: 25px; border-radius: 15px; border: 1px solid #dee2e6; margin-bottom: 30px;">
+            <h3 style="color: #ff9a56; margin-bottom: 15px; text-align: center;">💡 더 나은 서비스를 위한 팁</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div>
+                    <h4 style="color: #333; margin-bottom: 10px;">📸 좋은 사진 팁</h4>
+                    <ul style="color: #666; font-size: 0.9rem;">
+                        <li>정면을 바라보는 사진</li>
+                        <li>밝고 자연스러운 조명</li>
+                        <li>선명하고 흔들리지 않은 사진</li>
+                        <li>얼굴이 잘 보이는 각도</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #333; margin-bottom: 10px;">🚀 더 재미있게</h4>
+                    <ul style="color: #666; font-size: 0.9rem;">
+                        <li>다양한 표정으로 시도</li>
+                        <li>친구들과 함께 테스트</li>
+                        <li>결과를 SNS에 공유</li>
+                        <li>정기적으로 재분석</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="index.html" class="back-button">💕 소울메이트 찾기로 돌아가기</a>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 소울메이트 찾기. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">
+                <a href="privacy.html" style="color: #666; text-decoration: none;">개인정보처리방침</a> | 
+                <a href="terms.html" style="color: #666; text-decoration: none;">이용약관</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // FAQ 토글 기능
+        function toggleFaq(index) {
+            const answer = document.getElementById(`faq${index}`);
+            const question = answer.previousElementSibling;
+            const arrow = question.querySelector('span:last-child');
+            
+            // 모든 FAQ 닫기
+            document.querySelectorAll('.faq-answer').forEach(faq => {
+                if (faq !== answer) {
+                    faq.classList.remove('active');
+                    const otherArrow = faq.previousElementSibling.querySelector('span:last-child');
+                    otherArrow.textContent = '▼';
+                }
+            });
+            
+            // 현재 FAQ 토글
+            answer.classList.toggle('active');
+            arrow.textContent = answer.classList.contains('active') ? '▲' : '▼';
+        }
+
+        // 실시간 채팅 열기 (예시)
+        function openChat() {
+            alert('💬 실시간 채팅 서비스는 평일 09:00-18:00에 운영됩니다.\n현재 시간에는 이메일 문의를 이용해주세요!');
+        }
+
+        // 문의 폼 제출
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // 버튼 비활성화
+            submitBtn.disabled = true;
+            submitBtn.textContent = '📤 전송 중...';
+            
+            // 폼 데이터 수집
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // 시뮬레이션 (실제로는 서버로 전송)
+            setTimeout(() => {
+                // 성공 메시지 표시
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                
+                // 폼 리셋
+                this.reset();
+                
+                // 버튼 복원
+                submitBtn.disabled = false;
+                submitBtn.textContent = '📤 문의 보내기';
+                
+                // 성공 메시지 자동 숨김
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+                
+                // 상단으로 스크롤
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        });
+
+        // 입력 필드 실시간 검증
+        document.getElementById('email').addEventListener('input', function() {
+            const email = this.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (email && !emailRegex.test(email)) {
+                this.style.borderColor = '#e74c3c';
+            } else {
+                this.style.borderColor = '#dee2e6';
+            }
+        });
+
+        // 문의 유형 변경 시 제목 자동 완성
+        document.getElementById('inquiryType').addEventListener('change', function() {
+            const subjectField = document.getElementById('subject');
+            const suggestions = {
+                'service': '서비스 이용 관련 문의',
+                'technical': '기술적 문제 신고',
+                'privacy': '개인정보 관련 문의',
+                'business': '사업 제휴 문의',
+                'suggestion': '서비스 개선 제안',
+                'complaint': '불만 신고',
+                'other': '기타 문의'
+            };
+            
+            if (suggestions[this.value] && !subjectField.value) {
+                subjectField.placeholder = suggestions[this.value];
+            }
+        });
+
+        // 페이지 로드 시 FAQ 첫 번째 항목 열기
+        document.addEventListener('DOMContentLoaded', function() {
+            // 첫 번째 FAQ 자동 열기
+            toggleFaq(1);
+        });
+    </script>
+</body>
+</html>
